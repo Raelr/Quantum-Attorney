@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Wire.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=2]
+
+[node name="WireBoard" type="Node2D"]
+
+[node name="Wire" parent="." instance=ExtResource( 1 )]
+position = Vector2( 62.6314, -137.328 )
+
+[node name="Wire2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 62.6314, -0.817383 )
+
+[node name="Wire4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 62.6314, 135.496 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( -427.778, -138.901 )
+
+[node name="KinematicBody2D2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -427.778, -1.86145 )
+
+[node name="KinematicBody2D3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -427.778, 132.79 )

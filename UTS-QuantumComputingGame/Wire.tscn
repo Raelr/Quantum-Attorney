@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Wire.png" type="Texture" id=1]
+
+[node name="Wire" type="Node2D"]
+position = Vector2( 0.506592, 0.506683 )
+scale = Vector2( 0.996926, 0.748525 )
+z_index = -1
+
+[node name="Wire" type="Sprite" parent="."]
+position = Vector2( -266.878, -4.65911 )
+texture = ExtResource( 1 )
+offset = Vector2( -109.83, 4.36095 )
+
+[node name="Wire7" type="Sprite" parent="."]
+position = Vector2( 236.34, -4.65911 )
+texture = ExtResource( 1 )
+offset = Vector2( -109.83, 4.36095 )
+
+[node name="Wire4" type="Sprite" parent="."]
+position = Vector2( -15.1252, -4.65765 )
+texture = ExtResource( 1 )
+offset = Vector2( -109.83, 4.36095 )
+
+[node name="Wire8" type="Sprite" parent="."]
+position = Vector2( 488.092, -4.65765 )
+texture = ExtResource( 1 )
+offset = Vector2( -109.83, 4.36095 )
+
+[node name="Wire2" type="Sprite" parent="."]
+position = Vector2( -266.878, -4.79707 )
+texture = ExtResource( 1 )
+offset = Vector2( 14.9203, 4.50421 )
+
+[node name="Wire5" type="Sprite" parent="."]
+position = Vector2( 236.34, -4.79707 )
+texture = ExtResource( 1 )
+offset = Vector2( 14.9203, 4.50421 )
+
+[node name="Wire3" type="Sprite" parent="."]
+position = Vector2( -15.4305, -4.80988 )
+texture = ExtResource( 1 )
+offset = Vector2( 14.9203, 4.50421 )
