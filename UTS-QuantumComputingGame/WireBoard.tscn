@@ -6,19 +6,19 @@
 [node name="WireBoard" type="Node2D"]
 
 [node name="Wire" parent="." instance=ExtResource( 1 )]
-position = Vector2( 62.6314, -137.328 )
+position = Vector2( 62.6314, -150 )
 
 [node name="Wire2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 62.6314, -0.817383 )
+position = Vector2( 62.6314, 0 )
 
 [node name="Wire4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 62.6314, 135.496 )
+position = Vector2( 62.6314, 149 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( -427.778, -138.901 )
+position = Vector2( -427.778, -150 )
 
 [node name="KinematicBody2D2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -427.778, -1.86145 )
+position = Vector2( -427.778, 0 )
 
 [node name="KinematicBody2D3" parent="." instance=ExtResource( 2 )]
-position = Vector2( -427.778, 132.79 )
+position = Vector2( -427.778, 149 )
