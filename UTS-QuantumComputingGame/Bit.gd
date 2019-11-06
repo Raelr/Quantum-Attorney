@@ -10,11 +10,11 @@ func _ready():
 	update_text(bit)
 	is_movable = false
 
-func initialise():
+func initialise(status):
 	bit = 0
 	label = $Label
 	update_text(bit)
-	is_movable = false
+	is_movable = status
 
 func on_click(): 
 	if bit == 0:

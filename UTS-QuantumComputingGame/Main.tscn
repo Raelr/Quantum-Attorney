@@ -5,4 +5,4 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="WireBoard" parent="." instance=ExtResource( 1 )]
-position = Vector2( 498.005, 296.689 )
+position = Vector2( 509.85, 297.956 )
