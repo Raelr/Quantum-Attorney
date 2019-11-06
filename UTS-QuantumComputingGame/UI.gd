@@ -10,7 +10,7 @@ var offset : Vector2
 
 onready var wireboard = get_node("/root/Node2D/WireBoard")
 
-func check_input():
+func check_input(delta):
 	mouse_pos = get_global_mouse_position()
 	if Input.is_action_just_pressed("left_click"):
 		check_for_ray_target()
@@ -18,13 +18,15 @@ func check_input():
 			target.on_click()
 	elif Input.is_action_pressed("left_click") and !is_held:
 		is_held = true
-		wireboard.check_wires(mouse_pos)
 	elif Input.is_action_just_released("left_click"):
+		if target and target.is_movable:
+			var slot = wireboard.check_wires(target.position)
+			if slot:
+				target.position = slot
 		is_held = false 
 		target = null
 	elif Input.is_action_just_pressed("space"):
 		spawn_bit()
-	
 			
 func check_for_ray_target():
 	space_state = get_world_2d().direct_space_state
@@ -46,6 +48,6 @@ func get_offset(origin, target):
 	return position + direction * distance
 
 func _physics_process(delta):
-	check_input()
+	check_input(delta)
 	if target != null and is_held and target.is_movable:
 		target.position = mouse_pos + offset

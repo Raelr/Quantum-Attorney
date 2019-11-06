@@ -19,7 +19,6 @@ func _ready():
 			if object.name.find("Kinematic"):
 				bit = object
 			wire_positions.erase(object)
-	spawn_UI(wire_positions[0].position)
 	init_shape_extents()
 
 func init_shape_extents():
@@ -54,3 +53,14 @@ func check_in_bounds(coords):
 	var y = coords.y < max_y and coords.y > min_y
 	
 	return x and y
+	
+func get_closest_slot(coords):
+	var closest
+	var min_dist = 1000000
+	
+	for pos in wire_positions:
+		var dist = (coords - pos.global_position).length()
+		if  dist < min_dist:
+			closest = pos
+			min_dist = dist
+	return closest.global_position

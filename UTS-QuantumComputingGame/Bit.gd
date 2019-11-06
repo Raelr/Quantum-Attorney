@@ -3,6 +3,7 @@ extends KinematicBody2D
 var bit
 var label
 var is_movable
+var speed = 50
 
 func _ready():
 	bit = 0
