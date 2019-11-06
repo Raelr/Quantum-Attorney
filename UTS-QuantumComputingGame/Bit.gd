@@ -3,7 +3,9 @@ extends KinematicBody2D
 var bit
 var label
 var is_movable
-var speed = 50
+var speed = 500
+var destination
+var should_snap
 
 func _ready():
 	bit = 0
@@ -26,3 +28,18 @@ func on_click():
 
 func update_text(value):
 	label.text = str(value)
+
+func get_distance_to_destination():
+	var heading = destination - position
+	return heading.length()
+	
+func _physics_process(delta):
+	
+	if destination and !should_snap:
+		if get_distance_to_destination() > 0.01:
+			position = position.linear_interpolate(destination, delta * 10)
+		else:
+			position = destination
+			destination = null
+	elif destination and should_snap:
+		position = destination
