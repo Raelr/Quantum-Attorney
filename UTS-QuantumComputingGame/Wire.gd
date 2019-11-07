@@ -1,12 +1,12 @@
 extends Node2D
 
-var bit
-var wire_positions
-var wire_gates
-var changed
+onready var bit = $KinematicBody2D
+onready var wire_positions = $WireSegments.get_children()
+onready var wire_gates = $WireSegments.get_children()
 onready var shape = get_node("Area2D/CollisionShape2D")
-var extents
 
+var extents
+var changed
 var top_right
 var bottom_right
 var top_left
@@ -17,12 +17,6 @@ class SlotInfo:
 	var idx
 	
 func _ready():
-	wire_positions = get_children()
-	for object in wire_positions: 
-		if object.name.find("Wire") == -1:
-			if object.name.find("Kinematic"):
-				bit = object
-			wire_positions.erase(object)
 	init_shape_extents()
 
 func init_shape_extents():
@@ -42,6 +36,23 @@ func spawn_UI(new_pos):
 	add_child(new)
 	new.initialise(false)
 
+func insert(gate, idx):
+	if idx < wire_gates.size() and idx >= 0:
+		var existing_value = wire_gates[idx]
+		if !(existing_value is Sprite) and existing_value != self:
+			pass
+		gate.logic_gate.inserted = true
+		wire_gates[idx] = gate
+
+func remove(idx):
+	var gate
+	if idx < wire_gates.size() and idx >= 0:
+		gate = wire_gates[idx]
+		if !(gate is Sprite):
+			gate.logic_gate.inserted = false
+			wire_gates[idx] = wire_positions[idx]
+
+
 func check_in_bounds(coords): 
 	var min_x = top_left.x
 	var max_x = top_right.x
@@ -50,7 +61,7 @@ func check_in_bounds(coords):
 	var x = coords.x < max_x and coords.x > min_x
 	var y = coords.y < max_y and coords.y > min_y
 	return x and y
-	
+
 func get_closest_slot(coords):
 	var closest
 	var min_dist = 10000000

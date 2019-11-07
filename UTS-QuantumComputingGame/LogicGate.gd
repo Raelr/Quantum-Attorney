@@ -1,5 +1,7 @@
 class_name LogicGate
 
+var inserted
+
 func get_distance_to_destination(destination, pos):
 	var heading = destination - pos
 	return heading.length()

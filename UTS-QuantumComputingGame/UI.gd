@@ -15,15 +15,19 @@ func check_input():
 		check_for_ray_target()
 		if target != null:
 			target.on_click()
+			if target.logic_gate.inserted:
+				wireboard.remove_gate(target.position)
 	elif Input.is_action_pressed("left_click") and !is_held:
 		is_held = true
 	elif Input.is_action_just_released("left_click"):
 		if target and target.is_movable:
-			var slot = wireboard.check_wires(target.position)
+			var wire = wireboard.get_wire(target.position)
+			var slot = wireboard.get_wire_info(wire, target.position)
 			if slot:
 				target_pos = slot.slot_info.global_position
 				target.destination = target_pos
 				target.should_snap = false
+				wireboard.insert_gate(target, target.position, slot.idx)
 		is_held = false 
 		target = null
 	elif Input.is_action_just_pressed("space"):
