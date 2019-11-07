@@ -21,7 +21,7 @@ func remove_gate(coords):
 	var wire = get_wire(coords)
 	var info = get_wire_info(wire, coords)
 	if wire:
-		wire.remove(info.idx)
+		return wire.remove(info.idx)
 
 func get_wire_info(wire, coords):
 	if wire:

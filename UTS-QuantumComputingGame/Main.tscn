@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://WireBoard.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BitGateButton.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="WireBoard" parent="." instance=ExtResource( 1 )]
-position = Vector2( 509.85, 297.956 )
+position = Vector2( -1.04456, 52.2275 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.25, 1.25 )
+
+[node name="BitButton" parent="." groups=[
+"bitButton",
+] instance=ExtResource( 2 )]
+position = Vector2( 572.449, -307.98 )
+scale = Vector2( 0.8, 0.8 )

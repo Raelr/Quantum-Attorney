@@ -6,7 +6,6 @@ onready var wire_gates = $WireSegments.get_children()
 onready var shape = get_node("Area2D/CollisionShape2D")
 
 var extents
-var changed
 var top_right
 var bottom_right
 var top_left
@@ -17,6 +16,7 @@ class SlotInfo:
 	var idx
 	
 func _ready():
+	bit.is_movable = false
 	init_shape_extents()
 
 func init_shape_extents():
@@ -40,9 +40,15 @@ func insert(gate, idx):
 	if idx < wire_gates.size() and idx >= 0:
 		var existing_value = wire_gates[idx]
 		if !(existing_value is Sprite) and existing_value != self:
-			pass
+			destroy_gate(existing_value)
 		gate.logic_gate.inserted = true
 		wire_gates[idx] = gate
+
+func destroy_gate(gate):
+	var btn = get_tree().get_nodes_in_group("bitButton")[0]
+	gate.logic_gate.destroy = true
+	gate.is_movable = false
+	gate.destination = btn.position
 
 func remove(idx):
 	var gate
@@ -51,6 +57,7 @@ func remove(idx):
 		if !(gate is Sprite):
 			gate.logic_gate.inserted = false
 			wire_gates[idx] = wire_positions[idx]
+			return gate
 
 
 func check_in_bounds(coords): 

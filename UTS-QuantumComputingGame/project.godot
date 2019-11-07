@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "LogicGate",
 "language": "GDScript",
 "path": "res://LogicGate.gd"
+}, {
+"base": "Reference",
+"class": "LogicGateButton",
+"language": "GDScript",
+"path": "res://LogicGateButton.gd"
 } ]
 _global_script_class_icons={
-"LogicGate": ""
+"LogicGate": "",
+"LogicGateButton": ""
 }
 
 [application]

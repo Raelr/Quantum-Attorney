@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 90
+font_data = ExtResource( 1 )
+
+[node name="Label" type="Label"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 0.27
+margin_left = -28.4378
+margin_top = -67.1632
+margin_right = 26.5622
+margin_bottom = 60.8368
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
