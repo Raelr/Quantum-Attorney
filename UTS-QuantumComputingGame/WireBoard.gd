@@ -13,4 +13,5 @@ func check_wires(coords):
 			target_wire = wire
 			break
 	if target_wire:
-		return target_wire.get_closest_slot(coords)
+		var info  = target_wire.get_closest_slot(coords)
+		return info

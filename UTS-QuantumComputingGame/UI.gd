@@ -1,14 +1,11 @@
 extends Node2D
 
-export (int) var speed = 200
-var velocity := Vector2()
 var target
 var target_pos
 var space_state; 
 var is_held : bool
 var mouse_pos
 var offset : Vector2
-
 onready var wireboard = get_node("/root/Node2D/WireBoard")
 
 func check_input():
@@ -24,14 +21,14 @@ func check_input():
 		if target and target.is_movable:
 			var slot = wireboard.check_wires(target.position)
 			if slot:
-				target_pos = slot
+				target_pos = slot.slot_info.global_position
 				target.destination = target_pos
 				target.should_snap = false
 		is_held = false 
 		target = null
 	elif Input.is_action_just_pressed("space"):
 		spawn_bit()
-		
+	
 	if is_held and target: 
 		target.should_snap = true
 		target_pos = mouse_pos + offset
@@ -57,5 +54,5 @@ func get_offset(origin, target):
 	var direction = (heading / distance)
 	return position + direction * distance
 
-func _physics_process(delta):
+func _process(delta):
 	check_input()

@@ -11,6 +11,10 @@ var top_right
 var bottom_right
 var top_left
 var bottom_left
+
+class SlotInfo:
+	var slot_info
+	var idx
 	
 func _ready():
 	wire_positions = get_children()
@@ -39,28 +43,25 @@ func spawn_UI(new_pos):
 	new.initialise(false)
 
 func check_in_bounds(coords): 
-	
 	var min_x = top_left.x
-	#print("min_x ", str(min_x))
 	var max_x = top_right.x
-	#print("max_x ", str(max_x))
 	var min_y = bottom_right.y
-	#print("min_y ", str(min_y))
 	var max_y = top_right.y
-	#print("max_y ", str(max_y))
-	
 	var x = coords.x < max_x and coords.x > min_x
 	var y = coords.y < max_y and coords.y > min_y
-	
 	return x and y
 	
 func get_closest_slot(coords):
 	var closest
-	var min_dist = 1000000
-	
+	var min_dist = 10000000
+	var idx = 0
 	for pos in wire_positions:
 		var dist = (coords - pos.global_position).length()
 		if  dist < min_dist:
-			closest = pos
+			closest = SlotInfo.new() 
+			closest.slot_info = pos
+			closest.idx = idx
 			min_dist = dist
-	return closest.global_position
+		idx += 1
+	return closest
+

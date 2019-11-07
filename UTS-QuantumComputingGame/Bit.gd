@@ -6,17 +6,18 @@ var is_movable
 var speed = 500
 var destination
 var should_snap
+onready var logic_gate = LogicGate.new()
 
 func _ready():
 	bit = 0
 	label = $Label
-	update_text(bit)
+	logic_gate.update_text(bit, label)
 	is_movable = false
 
 func initialise(status):
 	bit = 0
 	label = $Label
-	update_text(bit)
+	logic_gate.update_text(bit, label)
 	is_movable = status
 
 func on_click(): 
@@ -24,22 +25,8 @@ func on_click():
 		bit = 1
 	elif bit == 1:
 		bit = 0
-	update_text(bit)
+	logic_gate.update_text(bit, label)
 
-func update_text(value):
-	label.text = str(value)
-
-func get_distance_to_destination():
-	var heading = destination - position
-	return heading.length()
+func _process(delta):
+	logic_gate.process_movement(delta, should_snap, destination, self)
 	
-func _physics_process(delta):
-	
-	if destination and !should_snap:
-		if get_distance_to_destination() > 0.01:
-			position = position.linear_interpolate(destination, delta * 10)
-		else:
-			position = destination
-			destination = null
-	elif destination and should_snap:
-		position = destination
