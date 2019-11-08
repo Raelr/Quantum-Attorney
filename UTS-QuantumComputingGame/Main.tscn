@@ -12,8 +12,6 @@ position = Vector2( -1.04456, 52.2275 )
 current = true
 zoom = Vector2( 1.25, 1.25 )
 
-[node name="BitButton" parent="." groups=[
-"bitButton",
-] instance=ExtResource( 2 )]
-position = Vector2( 572.449, -307.98 )
-scale = Vector2( 0.8, 0.8 )
+[node name="BitButton" parent="." instance=ExtResource( 2 )]
+position = Vector2( 562.762, -302.346 )
+scale = Vector2( 0.8, 0.779 )

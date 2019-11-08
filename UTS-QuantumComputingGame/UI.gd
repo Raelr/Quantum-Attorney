@@ -4,57 +4,71 @@ var target
 var target_pos
 var space_state; 
 var is_held : bool
-var mouse_pos
 var offset : Vector2
 onready var wireboard = get_node("/root/Node2D/WireBoard")
 
 func check_input():
-	mouse_pos = get_global_mouse_position()
+	var mouse_pos = get_global_mouse_position()
 	if Input.is_action_just_pressed("left_click"):
-		check_for_ray_target()
-		if target:
-			target.z_index = 1
-			if target.name.find("Button") != -1:
-				target = target.on_click(target.position, self)
-			elif not target.is_movable:
-				target = null
-				return
-			if target.logic_gate.inserted:
-				wireboard.remove_gate(target.position)
-
+		target = set_target(check_for_ray_target(mouse_pos))
 	elif Input.is_action_pressed("left_click") and !is_held:
 		is_held = true
 	elif Input.is_action_just_released("left_click"):
-		if target and target.is_movable:
-			var wire = wireboard.get_wire(target.position)
-			var slot = wireboard.get_wire_info(wire, target.position)
-			if slot:
-				print(slot)
-				target_pos = slot.slot_info.global_position
-				target.z_index = 0
-				target.destination = target_pos
-				target.should_snap = false
-				wireboard.insert_gate(target, target.position, slot.idx)
-			else:
-				target.should_snap = false
-				target.logic_gate.destroy = true
-				target.is_movable = false
-				target.destination = get_tree().get_nodes_in_group("bitButton")[0].position
+		if target:
+			if target.is_movable():
+				target = check_for_insertable_slot(target)
 		is_held = false 
 		target = null
-	if target and target.is_movable:
+	if target:
+		set_target_for_movement(mouse_pos, target)
+
+func check_for_insertable_slot(target):
+	var slot = wireboard.get_wire_slot(target.position)
+	if slot:
+		target.z_index = 0
+		target.set_destination(slot.slot_info.global_position)
+		target.should_snap = false
+		wireboard.insert_gate(target, target.position, slot.idx)
+	else:
+		target.destroy_after_movement()
+	return target
+
+func set_target_for_movement(mouse_pos, target):
+	if target.is_movable():
 		if is_held:
 			target.should_snap = true
 			target_pos = mouse_pos + offset
-		if is_held and target.destination != target_pos:
-			target.destination = target_pos
+		if is_held and target.destination() != target_pos:
+			target.set_destination(target_pos)
 
-func check_for_ray_target():
+func set_target(target):
+	if target:
+		target.z_index = 1
+		target = check_if_button(target)
+	if target and target.logic_gate.inserted:
+		wireboard.remove_gate(target.position)
+	return target
+
+func check_if_button(target):
+	if target.name.find("Button") != -1:
+		target = target.on_click(target.position, self)
+	
+	return target
+
+func check_for_ray_target(mouse_pos):
+	var target
 	space_state = get_world_2d().direct_space_state
 	var ray_results = space_state.intersect_point(mouse_pos)
 	if ray_results: 
-		target = ray_results[0].collider
-		offset = get_offset(target.position, mouse_pos)
+		for result in ray_results:
+			for group in result.collider.get_groups():
+				if group == "LogicGate":
+						target = result.collider
+			if result.collider.get_groups()[0].find("Button") != -1:
+				target = result.collider
+			if target:
+				offset = get_offset(target.position, mouse_pos)
+	return target
 
 func get_offset(origin, target):
 	var heading = origin - target

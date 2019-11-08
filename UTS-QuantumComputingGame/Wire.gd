@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var bit = $KinematicBody2D
+onready var bit = $Bit
 onready var wire_positions = $WireSegments.get_children()
 onready var wire_gates = $WireSegments.get_children()
 onready var shape = get_node("Area2D/CollisionShape2D")
@@ -16,7 +16,7 @@ class SlotInfo:
 	var idx
 	
 func _ready():
-	bit.is_movable = false
+	bit.set_movable(false)
 	init_shape_extents()
 
 func init_shape_extents():
@@ -30,7 +30,7 @@ func init_shape_extents():
 	bottom_left = Vector2(shape.global_position.x -length, shape.global_position.y -height)
 
 func spawn_UI(new_pos):
-	var new = preload("res://UI.tscn").instance()
+	var new = preload("res://Bit.tscn").instance()
 	new.scale.y = 1.3
 	new.position = new_pos
 	add_child(new)
@@ -46,9 +46,10 @@ func insert(gate, idx):
 
 func destroy_gate(gate):
 	var btn = get_tree().get_nodes_in_group("bitButton")[0]
+	gate.remove_from_group("LogicGate")
 	gate.logic_gate.destroy = true
-	gate.is_movable = false
-	gate.destination = btn.position
+	gate.set_movable(false) 
+	gate.set_destination(btn.position)
 
 func remove(idx):
 	var gate

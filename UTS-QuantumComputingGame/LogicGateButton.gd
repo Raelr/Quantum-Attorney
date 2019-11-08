@@ -7,3 +7,4 @@ func spawn_gate(mouse, parent, loaded_asset):
 	new.initialise(true)
 	new.z_index = 1
 	return new
+

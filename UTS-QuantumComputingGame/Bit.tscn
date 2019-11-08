@@ -7,7 +7,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 51.2632, 50.9613 )
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Bit" type="KinematicBody2D" groups=[
+"LogicGate",
+]]
 position = Vector2( 1.10547, -1.10559 )
 collision_mask = 2
 script = ExtResource( 1 )

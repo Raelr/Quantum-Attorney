@@ -17,6 +17,9 @@ func get_wire(coords):
 		if is_in:
 			return wire
 
+func get_wire_slot(coords):
+	return get_wire_info(get_wire(coords), coords)
+
 func remove_gate(coords):
 	var wire = get_wire(coords)
 	var info = get_wire_info(wire, coords)

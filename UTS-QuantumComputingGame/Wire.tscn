@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Wire.gd" type="Script" id=1]
 [ext_resource path="res://Wire.png" type="Texture" id=2]
-[ext_resource path="res://UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Bit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 491.818, 105.844 )
@@ -43,7 +43,7 @@ texture = ExtResource( 2 )
 [node name="Wire7" type="Sprite" parent="WireSegments"]
 texture = ExtResource( 2 )
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
+[node name="Bit" parent="." instance=ExtResource( 3 )]
 position = Vector2( -442.141, 0 )
 scale = Vector2( 1, 1.3 )
 
