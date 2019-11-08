@@ -33,11 +33,9 @@ func set_movable(status):
 func is_movable():
 	return logic_gate.is_movable
 
-func set_destination(destination):
+func set_destination(destination, snap):
 	logic_gate.destination = destination
-
-func set_selected(pos):
-	pass
+	should_snap = snap
 
 func destination():
 	return logic_gate.destination

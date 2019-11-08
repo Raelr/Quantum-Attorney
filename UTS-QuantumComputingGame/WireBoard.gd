@@ -5,10 +5,16 @@ var wires
 func _ready():
 	 wires = get_children()
 
-func insert_gate(gate, coords, idx):
+func insert_gate(gate, coords):
+	var slot = get_wire_slot(gate.position)
 	var wire = get_wire(coords)
+	if slot:
+		gate.z_index = 0
+		gate.set_destination(slot.slot_info.global_position, false)
+	else:
+		gate.destroy_after_movement()
 	if wire:
-		wire.insert(gate, idx)
+		wire.insert(gate, slot.idx)
 
 func get_wire(coords): 
 	var target_wire

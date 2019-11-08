@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "LogicGateButton",
 "language": "GDScript",
 "path": "res://LogicGateButton.gd"
+}, {
+"base": "Reference",
+"class": "RayCastController",
+"language": "GDScript",
+"path": "res://RayCastContr.gd"
 } ]
 _global_script_class_icons={
 "LogicGate": "",
-"LogicGateButton": ""
+"LogicGateButton": "",
+"RayCastController": ""
 }
 
 [application]
@@ -31,7 +37,7 @@ run/main_scene="res://Main.tscn"
 
 [autoload]
 
-UIController="*res://UI.gd"
+UIController="*res://Controller.gd"
 
 [input]
 
