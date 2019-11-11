@@ -1,15 +1,16 @@
 extends Node2D
 const util = preload("Util.gd")
+const math = preload("MathUtils.gd")
 onready var wireboard = get_node("/root/Node2D/WireBoard")
 onready var raycast = RayCastController.new()
 var target
 var is_held : bool
 var offset = Vector2()
-var mat = Mat4.new()
 
 func _ready():
-	mat.get_product(mat, [0,0,0,1])
-	
+	var tensor = math.tensor_product([1,0], [0,1])
+	print(tensor)
+
 func check_input():
 	var mouse_pos = get_global_mouse_position()
 	if Input.is_action_just_pressed("left_click"):
