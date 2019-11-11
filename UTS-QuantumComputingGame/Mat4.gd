@@ -1,13 +1,8 @@
 class_name Mat4
-
 var matrix = Array()
 
-func _init():
-	var row_1 = [1, 0, 0, 0]
-	var row_2 = [0, 1, 0, 0]
-	var row_3 = [0, 0, 0, 1]
-	var row_4 = [0, 0, 1, 0]
-	matrix = [row_1, row_2, row_3, row_4]
+func _init(rows):
+	matrix = rows
 
 static func get_product(matrix, vector):
 	if matrix.matrix.size() == vector.size():

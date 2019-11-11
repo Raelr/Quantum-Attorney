@@ -6,3 +6,6 @@ static func tensor_product(vec_a,  vec_b):
 		for other in vec_b:
 			product.append(value * other)
 	return product
+
+static func create_mat4(rows):
+	return Mat4.new(rows)

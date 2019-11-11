@@ -1,15 +1,10 @@
 extends Node2D
 const util = preload("Util.gd")
-const math = preload("MathUtils.gd")
 onready var wireboard = get_node("/root/Node2D/WireBoard")
 onready var raycast = RayCastController.new()
 var target
 var is_held : bool
 var offset = Vector2()
-
-func _ready():
-	var tensor = math.tensor_product([1,0], [0,1])
-	print(tensor)
 
 func check_input():
 	var mouse_pos = get_global_mouse_position()

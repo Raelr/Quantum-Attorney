@@ -1,18 +1,22 @@
-extends KinematicBody2D
-export (bool) var bit
-var label
-export (int) var speed = 500
-var should_snap
+extends Node
 onready var logic_gate = LogicGate.new()
+const maths = preload("MathUtils.gd")
+var transform_mat
+var should_snap
+
+func process_value(control, origin):
+	var tensor = maths.tensor_product(origin, control)
+	transform_mat.get_product(transform_mat, origin)
 
 func _ready():
-	initialise(false)
+	initialise(true)
 
-# REUSABLE FUNCTIONS, DO NOT REMOVE 
 func initialise(status):
-	bit = [1,0]
-	label = $Label
-	logic_gate.update_text(bit, label)
+	var row_1 = [1, 0, 0, 0]
+	var row_2 = [0, 1, 0, 0]
+	var row_3 = [0, 0, 0, 1]
+	var row_4 = [0, 0, 1, 0]
+	transform_mat = maths.create_mat4([row_1, row_2, row_3, row_4])
 	set_movable(status)
 
 func destroy_after_movement():
@@ -40,4 +44,3 @@ func will_be_destroyed():
 
 func _process(delta):
 	logic_gate.process_movement(delta, should_snap, self)
-	
