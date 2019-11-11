@@ -12,27 +12,27 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "LogicGate",
 "language": "GDScript",
-"path": "res://LogicGate.gd"
+"path": "res://Scripts/LogicGate.gd"
 }, {
 "base": "Reference",
 "class": "LogicGateButton",
 "language": "GDScript",
-"path": "res://LogicGateButton.gd"
+"path": "res://Scripts/LogicGateButton.gd"
 }, {
 "base": "Reference",
 "class": "Mat4",
 "language": "GDScript",
-"path": "res://Mat4.gd"
+"path": "res://Scripts/Mat4.gd"
 }, {
 "base": "Reference",
 "class": "MathUtils",
 "language": "GDScript",
-"path": "res://MathUtils.gd"
+"path": "res://Scripts/MathUtils.gd"
 }, {
 "base": "Reference",
 "class": "RayCastController",
 "language": "GDScript",
-"path": "res://RayCastContr.gd"
+"path": "res://Scripts/RayCastContr.gd"
 } ]
 _global_script_class_icons={
 "LogicGate": "",
@@ -49,7 +49,7 @@ run/main_scene="res://Main.tscn"
 
 [autoload]
 
-UIController="*res://Controller.gd"
+UIController="*res://Scripts/Controller.gd"
 
 [input]
 

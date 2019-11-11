@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var button = LogicGateButton.new()
-var loaded_asset = preload("res://Bit.tscn")
+var loaded_asset = preload("res://LogicGates/Bit.tscn")
 
 func on_click(mouse_pos, parent):
 	z_index = 1

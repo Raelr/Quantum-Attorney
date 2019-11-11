@@ -1,6 +1,6 @@
 extends Node
 onready var logic_gate = LogicGate.new()
-const maths = preload("MathUtils.gd")
+onready var maths = MathUtils.new()
 var transform_mat
 var should_snap
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bit.png-b0213e14b43ceeaa070c6ef3175a27fc.stex"
+path="res://.import/Bit.png-35ca46fe77d33dcb4afd574fc2a5e5c0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bit.png"
-dest_files=[ "res://.import/Bit.png-b0213e14b43ceeaa070c6ef3175a27fc.stex" ]
+source_file="res://Images/Bit.png"
+dest_files=[ "res://.import/Bit.png-35ca46fe77d33dcb4afd574fc2a5e5c0.stex" ]
 
 [params]
 

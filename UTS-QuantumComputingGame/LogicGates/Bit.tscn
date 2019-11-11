@@ -1,8 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Bit.gd" type="Script" id=1]
-[ext_resource path="res://Bit.png" type="Texture" id=2]
-[ext_resource path="res://PixelArtText.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Bit.gd" type="Script" id=1]
+[ext_resource path="res://Images/Bit.png" type="Texture" id=2]
+[ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=3]
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 51.2632, 50.9613 )

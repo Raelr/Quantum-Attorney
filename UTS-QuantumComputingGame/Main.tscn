@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://WireBoard.tscn" type="PackedScene" id=1]
-[ext_resource path="res://BitGateButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://CNOTGate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://DataStructs/WireBoard.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/BitGateButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://LogicGates/CNOTGate.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
