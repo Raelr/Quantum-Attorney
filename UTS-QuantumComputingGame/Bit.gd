@@ -4,7 +4,6 @@ export (bool) var bit
 var label
 export (int) var speed = 500
 var should_snap
-
 onready var logic_gate = LogicGate.new()
 
 func _ready():

@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://LogicGateButton.gd"
 }, {
 "base": "Reference",
+"class": "Mat4",
+"language": "GDScript",
+"path": "res://Mat4.gd"
+}, {
+"base": "Reference",
 "class": "RayCastController",
 "language": "GDScript",
 "path": "res://RayCastContr.gd"
@@ -27,6 +32,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "LogicGate": "",
 "LogicGateButton": "",
+"Mat4": "",
 "RayCastController": ""
 }
 
