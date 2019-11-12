@@ -6,7 +6,7 @@ var should_snap
 
 func process_value(control, origin):
 	var tensor = maths.tensor_product(origin, control)
-	transform_mat.get_product(transform_mat, origin)
+	transform_mat.get_product(transform_mat, tensor)
 
 func _ready():
 	initialise(true)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CNOT.png-bb5d60984caf6f2ad1c3ceee96cdd549.stex"
+path="res://.import/ControlGate.png-1cdc040054cacb8b2c0292383098f904.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/CNOT.png"
-dest_files=[ "res://.import/CNOT.png-bb5d60984caf6f2ad1c3ceee96cdd549.stex" ]
+source_file="res://Images/ControlGate.png"
+dest_files=[ "res://.import/ControlGate.png-1cdc040054cacb8b2c0292383098f904.stex" ]
 
 [params]
 

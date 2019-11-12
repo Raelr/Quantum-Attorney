@@ -5,10 +5,13 @@ onready var raycast = RayCastController.new()
 var target
 var is_held : bool
 var offset = Vector2()
+onready var line = get_node("/root/Node2D/ControlLine")
 
 func check_input():
 	var mouse_pos = get_global_mouse_position()
 	if Input.is_action_just_pressed("left_click"):
+		line.global_position = wireboard.wires[0].global_position
+		line.destination = (wireboard.wires[1].global_position - wireboard.wires[0].global_position)
 		target = set_target(raycast.raycast_for_groups(self, mouse_pos, ["LogicGate", "Button"]))
 		if target:
 			offset = util.get_offset(target.position, mouse_pos, position)
@@ -49,3 +52,4 @@ func remove_target(target):
 
 func _process(delta):
 	check_input()
+	

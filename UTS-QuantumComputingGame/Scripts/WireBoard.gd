@@ -17,7 +17,6 @@ func insert_gate(gate, coords):
 		wire.insert(gate, slot.idx)
 
 func get_wire(coords): 
-	var target_wire
 	for wire in wires:
 		var is_in = wire.check_in_bounds(coords)
 		if is_in:

@@ -6,7 +6,6 @@ onready var shape = get_node("Area2D/CollisionShape2D")
 onready var top_right = Vector2(shape.global_position.x + shape.shape.extents.x, shape.global_position.y + shape.shape.extents.y)
 onready var bottom_right = Vector2(shape.global_position.x + shape.shape.extents.x, shape.global_position.y -shape.shape.extents.y)
 onready var top_left = Vector2(shape.global_position.x -shape.shape.extents.x, shape.global_position.y + shape.shape.extents.y)
-onready var bottom_left = Vector2(shape.global_position.x -shape.shape.extents.x, shape.global_position.y -shape.shape.extents.y)
 
 class SlotInfo:
 	var slot_info
