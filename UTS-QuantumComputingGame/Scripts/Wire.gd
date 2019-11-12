@@ -55,3 +55,9 @@ func get_closest_slot(coords):
 			min_dist = dist
 		idx += 1
 	return closest
+
+func process_bits(wireboard):
+	for node in wire_gates:
+		if !(node is Sprite):
+			if node.name.find("CNOT") != -1:
+				pass

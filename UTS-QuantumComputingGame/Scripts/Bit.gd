@@ -1,5 +1,5 @@
 extends KinematicBody2D
-export (bool) var bit
+var bit
 var label
 var should_snap
 onready var logic_gate = LogicGate.new()
@@ -13,11 +13,15 @@ func on_removed():
 func on_insert(wireboard, wire, slot):
 	pass
 
+func set_bit(value):
+	bit = value
+	logic_gate.update_text(bit[1], label)
+
 # REUSABLE FUNCTIONS, DO NOT REMOVE 
 func initialise(status):
 	bit = [1,0]
 	label = $Label
-	logic_gate.update_text(bit, label)
+	logic_gate.update_text(bit[1], label)
 	set_movable(status)
 
 func destroy_after_movement():

@@ -4,7 +4,6 @@ var should_snap
 onready var logic_gate = LogicGate.new()
 
 func on_insert(wireboard, wire, slot):
-	print("Insert")
 	line.add_point(Vector2(0,0))
 	line.set_process(true)
 	if wire.idx > 0 and wire.idx < wireboard.wires.size():
@@ -12,9 +11,12 @@ func on_insert(wireboard, wire, slot):
 		var control_wire = wireboard.wires[new_idx]
 		if control_wire:
 			line.destination = (control_wire.wire_positions[slot.idx].global_position - slot.slot_info.global_position)
+			var gate = control_wire.wire_gates[slot.idx]
+			if gate.name.find("CNOT") != -1:
+				gate.control = wire.bit.bit
+				print(gate.control)
 
 func on_removed():
-	print("Remove")
 	line.remove_point(1)
 	line.set_process(false)
 
