@@ -1,7 +1,7 @@
 extends Line2D
 const utils = preload("Util.gd")
 var destination
-var speed = 3
+var speed = 8
 	
 func set_line_extents(destination):
 	set_point_position(1, destination)

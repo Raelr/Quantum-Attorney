@@ -1,23 +1,27 @@
 extends KinematicBody2D
-export (bool) var bit
-var label
+onready var line = get_node("ControlLine")
 var should_snap
 onready var logic_gate = LogicGate.new()
 
-func _ready():
-	initialise(false)
+func on_insert(wireboard, wire, slot):
+	print("Insert")
+	line.add_point(Vector2(0,0))
+	line.set_process(true)
+	if wire.idx > 0 and wire.idx < wireboard.wires.size():
+		var new_idx = wire.idx - 1
+		var control_wire = wireboard.wires[new_idx]
+		if control_wire:
+			line.destination = (control_wire.wire_positions[slot.idx].global_position - slot.slot_info.global_position)
 
 func on_removed():
-	pass
+	print("Remove")
+	line.remove_point(1)
+	line.set_process(false)
 
-func on_insert(wireboard, wire, slot):
-	pass
+func _ready():
+	initialise(true)
 
-# REUSABLE FUNCTIONS, DO NOT REMOVE 
 func initialise(status):
-	bit = [1,0]
-	label = $Label
-	logic_gate.update_text(bit, label)
 	set_movable(status)
 
 func destroy_after_movement():

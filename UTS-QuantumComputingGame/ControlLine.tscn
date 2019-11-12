@@ -3,7 +3,8 @@
 [ext_resource path="res://Scripts/ControlLine.gd" type="Script" id=1]
 
 [node name="ControlLine" type="Line2D"]
-position = Vector2( 0.912048, 0.912048 )
-points = PoolVector2Array( -60.5352, -52.0033 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 15.0
+default_color = Color( 0.478431, 0.478431, 0.478431, 1 )
 texture_mode = -1006111072
 script = ExtResource( 1 )

@@ -3,9 +3,17 @@ onready var logic_gate = LogicGate.new()
 onready var maths = MathUtils.new()
 var transform_mat
 var should_snap
+var control
+var passed_value
 
-func process_value(control, origin):
-	var tensor = maths.tensor_product(origin, control)
+func on_removed():
+	pass
+
+func on_insert(wireboard, wire, slot):
+	pass
+
+func process_value():
+	var tensor = maths.tensor_product(passed_value, control)
 	transform_mat.get_product(transform_mat, tensor)
 
 func _ready():
@@ -38,7 +46,7 @@ func set_destination(destination, snap):
 
 func destination():
 	return logic_gate.destination
-	
+
 func will_be_destroyed():
 	return logic_gate.destroy
 

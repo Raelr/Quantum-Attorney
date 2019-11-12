@@ -1,9 +1,12 @@
 extends Node2D
-
 var wires
 
 func _ready():
-	 wires = get_children()
+	wires = get_children()
+	var idx = 0
+	for wire in wires:
+		wire.idx = idx
+		idx+=1
 
 func insert_gate(gate, coords):
 	var slot = get_wire_slot(gate.position)
@@ -15,6 +18,7 @@ func insert_gate(gate, coords):
 		gate.destroy_after_movement()
 	if wire:
 		wire.insert(gate, slot.idx)
+		gate.on_insert(self, wire, slot)
 
 func get_wire(coords): 
 	for wire in wires:
@@ -30,6 +34,7 @@ func remove_gate(coords):
 	var info = get_wire_info(wire, coords)
 	if wire:
 		return wire.remove(info.idx)
+		
 
 func get_wire_info(wire, coords):
 	if wire:
