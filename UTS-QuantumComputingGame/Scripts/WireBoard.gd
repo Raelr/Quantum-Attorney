@@ -23,8 +23,9 @@ func insert_gate(gate, coords):
 		gate.destroy_after_movement()
 	if wire:
 		wire.insert(gate, slot.idx)
-		gate.on_insert(self, wire, slot)
 		process_bits()
+		gate.on_insert(self, wire, slot)
+
 
 func get_wire(coords): 
 	for wire in wires:

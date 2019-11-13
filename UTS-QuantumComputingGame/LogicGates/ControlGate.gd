@@ -2,23 +2,36 @@ extends KinematicBody2D
 onready var line = get_node("ControlLine")
 var should_snap
 onready var logic_gate = LogicGate.new()
+var controlled_gate
+var passed_value
+
+func process_value():
+	return passed_value
 
 func on_insert(wireboard, wire, slot):
-	line.add_point(Vector2(0,0))
-	line.set_process(true)
 	if wire.idx > 0 and wire.idx < wireboard.wires.size():
 		var new_idx = wire.idx - 1
 		var control_wire = wireboard.wires[new_idx]
 		if control_wire:
-			line.destination = (control_wire.wire_positions[slot.idx].global_position - slot.slot_info.global_position)
 			var gate = control_wire.wire_gates[slot.idx]
 			if gate.name.find("CNOT") != -1:
-				gate.control = wire.bit.bit
-				print(gate.control)
+				attach_gate(gate, wireboard, control_wire)
+
+func attach_gate(other_gate, wireboard, wire):
+	controlled_gate = other_gate
+	line.add_point(Vector2(0,0))
+	line.set_process(true)
+	var slot = wireboard.get_wire_slot(other_gate.position)
+	line.destination = (slot.slot_info.global_position - wire.wire_positions[slot.idx].global_position)
+	controlled_gate.control = passed_value
+	wire.process_bits(wireboard)
 
 func on_removed():
 	line.remove_point(1)
 	line.set_process(false)
+	if controlled_gate:
+		controlled_gate.control = null
+		controlled_gate = null
 
 func _ready():
 	initialise(true)

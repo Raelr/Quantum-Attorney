@@ -8,6 +8,7 @@
 radius = 32.2872
 
 [node name="Control" type="KinematicBody2D" groups=[
+"Control",
 "LogicGate",
 ]]
 script = ExtResource( 1 )
