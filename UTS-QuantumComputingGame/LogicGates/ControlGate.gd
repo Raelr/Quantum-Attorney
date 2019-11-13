@@ -15,7 +15,7 @@ func on_insert(wireboard, wire, slot):
 		if control_wire:
 			var gate = control_wire.wire_gates[slot.idx]
 			if gate.name.find("CNOT") != -1:
-				attach_gate(gate, wireboard, control_wire)
+				attach_gate(gate, wireboard, wire)
 
 func attach_gate(other_gate, wireboard, wire):
 	controlled_gate = other_gate
@@ -24,6 +24,7 @@ func attach_gate(other_gate, wireboard, wire):
 	var slot = wireboard.get_wire_slot(other_gate.position)
 	line.destination = (slot.slot_info.global_position - wire.wire_positions[slot.idx].global_position)
 	controlled_gate.control = passed_value
+	other_gate.controlling_gate = self
 	wire.process_bits(wireboard)
 
 func on_removed():
@@ -31,6 +32,7 @@ func on_removed():
 	line.set_process(false)
 	if controlled_gate:
 		controlled_gate.control = null
+		controlled_gate.controlling_gate = null
 		controlled_gate = null
 
 func _ready():

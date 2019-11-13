@@ -23,9 +23,9 @@ func insert_gate(gate, coords):
 		gate.destroy_after_movement()
 	if wire:
 		wire.insert(gate, slot.idx)
-		process_bits()
+		gate.passed_value = wire.bit.bit
 		gate.on_insert(self, wire, slot)
-
+		process_bits()
 
 func get_wire(coords): 
 	for wire in wires:
@@ -40,7 +40,9 @@ func remove_gate(coords):
 	var wire = get_wire(coords)
 	var info = get_wire_info(wire, coords)
 	if wire:
-		return wire.remove(info.idx)
+		var removed = wire.remove(info.idx)
+		process_bits()
+		return removed
 
 func convert_to_vec(value):
 		if value == 1: 

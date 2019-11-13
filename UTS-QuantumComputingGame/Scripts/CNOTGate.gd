@@ -4,10 +4,13 @@ onready var maths = MathUtils.new()
 var transform_mat
 var should_snap
 var control
+var controlling_gate
 var passed_value
 
 func on_removed():
-	pass
+	if controlling_gate:
+		controlling_gate.on_removed()
+		controlling_gate = null
 
 func on_insert(wireboard, wire, slot):
 	if wire.idx < wireboard.wires.size()-1:
@@ -25,7 +28,6 @@ func process_value():
 		var tensor = maths.tensor_product(control, passed_value)
 		bit_vec = maths.get_significant_bits(transform_mat.get_product(transform_mat, tensor))
 	else:
-		print("No Control set!")
 		bit_vec = maths.get_significant_bits(maths.flip_bits(passed_value, transform_mat))
 	return bit_vec
 
