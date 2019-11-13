@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Wire.gd" type="Script" id=1]
 [ext_resource path="res://Images/Wire.png" type="Texture" id=2]
 [ext_resource path="res://LogicGates/Bit.tscn" type="PackedScene" id=3]
-
+[ext_resource path="res://Images/Bit.png" type="Texture" id=4]
+[ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 491.818, 105.844 )
@@ -56,3 +57,15 @@ scale = Vector2( 1.01, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -51.8602, 0 )
 shape = SubResource( 1 )
+
+[node name="Bit2" type="Sprite" parent="."]
+position = Vector2( 545.795, 0.197311 )
+scale = Vector2( 0.802185, 1.0713 )
+texture = ExtResource( 4 )
+
+[node name="Label" parent="." instance=ExtResource( 5 )]
+margin_left = 518.094
+margin_top = -100.275
+margin_right = 573.094
+margin_bottom = 53.7248
+rect_scale = Vector2( 1.01919, 1.26789 )

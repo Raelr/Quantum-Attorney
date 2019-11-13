@@ -12,6 +12,7 @@ func _ready():
 	for value in bits:
 		wires[idx].bit.set_bit(convert_to_vec(value))
 		idx+=1
+	process_bits()
 
 func insert_gate(gate, coords):
 	var slot = get_wire_slot(gate.position)
@@ -23,7 +24,7 @@ func insert_gate(gate, coords):
 		gate.destroy_after_movement()
 	if wire:
 		wire.insert(gate, slot.idx)
-		gate.passed_value = wire.bit.bit
+		gate.passed_value = wire.bit_value
 		gate.on_insert(self, wire, slot)
 		process_bits()
 
@@ -45,10 +46,10 @@ func remove_gate(coords):
 		return removed
 
 func convert_to_vec(value):
-		if value == 1: 
-			return [0, 1]
+		if value == 0: 
+			return [1, 0]
 		else: 
-			return [1,0]
+			return [0,value]
 
 func get_wire_info(wire, coords):
 	if wire:

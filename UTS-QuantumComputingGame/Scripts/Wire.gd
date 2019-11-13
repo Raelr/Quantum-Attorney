@@ -1,11 +1,13 @@
 extends Node2D
 onready var bit = $Bit
+onready var bit_value = bit.bit
 onready var wire_positions = $WireSegments.get_children()
 onready var wire_gates = $WireSegments.get_children()
 onready var shape = get_node("Area2D/CollisionShape2D")
 onready var top_right = Vector2(shape.global_position.x + shape.shape.extents.x, shape.global_position.y + shape.shape.extents.y)
 onready var bottom_right = Vector2(shape.global_position.x + shape.shape.extents.x, shape.global_position.y -shape.shape.extents.y)
 onready var top_left = Vector2(shape.global_position.x -shape.shape.extents.x, shape.global_position.y + shape.shape.extents.y)
+onready var output = get_node("Label")
 var idx
 
 class SlotInfo:
@@ -43,7 +45,7 @@ func check_in_bounds(coords):
 	return x and y
 
 func get_closest_slot(coords):
-	var closest
+	var closest 
 	var min_dist = 10000000
 	var idx = 0
 	for pos in wire_positions:
@@ -57,10 +59,9 @@ func get_closest_slot(coords):
 	return closest
 
 func process_bits(wireboard):
-	print(name)
-	var bit_value = bit.bit
+	bit_value = bit.bit
 	for node in wire_gates:
 		if !(node is Sprite):
 			node.passed_value = bit_value
 			bit_value = node.process_value()
-	print("Final value: ", bit_value[1])
+	output.text = str(bit_value[1])
