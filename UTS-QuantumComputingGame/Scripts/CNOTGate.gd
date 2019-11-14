@@ -20,12 +20,12 @@ func on_insert(wireboard, wire, slot):
 			for group in other.get_groups():
 				if group == "Control":
 					other.attach_gate(self, wireboard, other_wire)
-					wire.process_bits(wireboard)
+					#wire.process_bits(wireboard)
 
 func process_value():
 	var bit_vec
 	if control:
-		var tensor = maths.tensor_product(control, passed_value)
+		var tensor = maths.tensor_product(controlling_gate.passed_value, passed_value)
 		bit_vec = maths.get_significant_bits(transform_mat.get_product(transform_mat, tensor))
 	else:
 		bit_vec = maths.get_significant_bits(maths.flip_bits(passed_value, transform_mat))
@@ -34,6 +34,7 @@ func process_value():
 func _ready():
 	initialise(true)
 
+# TODO Abstract all of these methods into an all encompassing class group. 
 func initialise(status):
 	var row_1 = [1, 0, 0, 0]
 	var row_2 = [0, 1, 0, 0]
