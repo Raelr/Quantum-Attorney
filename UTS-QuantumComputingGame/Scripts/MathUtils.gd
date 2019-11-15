@@ -12,8 +12,11 @@ static func flip_bits(bits, mat):
 	return mat.get_product(mat, tensor)
 
 static func get_significant_bits(vector):
-	var significant_bits
-	if vector[0] == 0 and vector[0] == 0:
+	var significant_bits = Array()
+	
+	if (vector[0] != 0 and vector[vector.size()-1] != 0) and (vector[1] == 0 and vector[2] == 0):
+		significant_bits = vector
+	elif vector[0] == 0 and vector[0] == 0:
 		significant_bits = [vector[vector.size() -2], vector[vector.size() -1]]
 	else:
 		significant_bits = [vector[0], vector[1]]

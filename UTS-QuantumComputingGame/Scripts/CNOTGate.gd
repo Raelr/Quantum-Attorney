@@ -25,10 +25,13 @@ func on_insert(wireboard, wire, slot):
 func process_value():
 	var bit_vec
 	if control:
+		print("Control: ", control)
 		var tensor = maths.tensor_product(controlling_gate.passed_value, passed_value)
+		print("Tensor: ", tensor)
 		bit_vec = maths.get_significant_bits(transform_mat.get_product(transform_mat, tensor))
 	else:
 		bit_vec = maths.get_significant_bits(maths.flip_bits(passed_value, transform_mat))
+	print("Flipped value: ", bit_vec)
 	return bit_vec
 
 func _ready():

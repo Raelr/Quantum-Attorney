@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://LogicGates/HademardGate.gd" type="Script" id=1]
+[ext_resource path="res://Images/Bit.png" type="Texture" id=2]
+[ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64.0737, 64.1061 )
+
+[node name="Hademard" type="KinematicBody2D" groups=[
+"LogicGate",
+]]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Label" parent="." instance=ExtResource( 3 )]
+margin_left = -33.8709
+margin_top = -82.3434
+margin_right = 21.1291
+margin_bottom = 45.6566
+rect_scale = Vector2( 1.20896, 1.20896 )
+text = "H"

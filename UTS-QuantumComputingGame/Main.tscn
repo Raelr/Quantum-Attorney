@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://DataStructs/WireBoard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/BitGateButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://LogicGates/CNOTGate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://LogicGates/ControlGate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://LogicGates/HademardGate.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,3 +31,11 @@ position = Vector2( 228.502, -298.872 )
 
 [node name="Control2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 156.74, -298.872 )
+
+[node name="Hademard" parent="." instance=ExtResource( 5 )]
+position = Vector2( 63.2692, -302.519 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Hademard2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -58.4481, -302.519 )
+scale = Vector2( 0.8, 0.8 )
