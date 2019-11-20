@@ -66,5 +66,6 @@ func process_bits(wireboard):
 			node.passed_value = bit_value
 			bit_value = node.process_value()
 	print("Final: ", bit_value)
+	
 	if output.text != str(bit_value[1]):
 		output.text = str(bit_value[1])

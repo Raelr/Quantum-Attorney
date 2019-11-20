@@ -10,7 +10,7 @@
 
 [node name="WireBoard" parent="." instance=ExtResource( 1 )]
 position = Vector2( -1.04456, 52.2275 )
-bits = [ 0.0, 0.0, 1.0 ]
+bits = [ 0.0, 0.0, 0.0 ]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
