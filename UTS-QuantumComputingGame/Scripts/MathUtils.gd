@@ -7,6 +7,16 @@ static func tensor_product(vec_a,  vec_b):
 			product.append(value * other)
 	return product
 
+static func tensor(vectors):
+	var tensor = Array()
+	for i in range(0, vectors.size()):
+		if i < vectors.size() - 1:
+			if i == 0:
+				tensor = tensor_product(vectors[i], vectors[i + 1])
+			else:
+				tensor = tensor_product(tensor, vectors[i + 1])
+	return tensor
+
 static func flip_bits(bits, mat):
 	var tensor = tensor_product([0,1], bits)
 	return mat.get_product(mat, tensor)

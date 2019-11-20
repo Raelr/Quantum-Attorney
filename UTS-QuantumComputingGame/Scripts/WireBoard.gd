@@ -19,13 +19,7 @@ func _ready():
 	for value in bits:
 		all_bits.append(convert_to_vec(value))
 	
-	for i in range(0, all_bits.size()):
-		if i < all_bits.size() - 1:
-			if i == 0:
-				circuit_state = maths.tensor_product(all_bits[i], all_bits[i + 1])
-			else:
-				circuit_state = maths.tensor_product(circuit_state, all_bits[i + 1])
-	print("Start: ", str(circuit_state))
+	circuit_state = maths.tensor(all_bits)
 	process_bits()
 
 func insert_gate(gate, coords):

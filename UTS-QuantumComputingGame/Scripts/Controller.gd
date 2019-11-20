@@ -5,10 +5,6 @@ onready var raycast = RayCastController.new()
 var target
 var is_held : bool
 var offset = Vector2()
-var maths = MathUtils.new()
-
-func _ready():
-	print(maths.tensor_product([0,1], [1/sqrt(2),0, 0, 1/sqrt(2)]))
 
 func check_input():
 	var mouse_pos = get_global_mouse_position()
