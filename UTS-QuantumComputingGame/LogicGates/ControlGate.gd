@@ -12,7 +12,7 @@ func process_value():
 
 func on_insert(wireboard, wire, slot):
 	if wire.idx > 0 and wire.idx < wireboard.wires.size():
-		var new_idx = wire.idx - 1
+		var new_idx = wire.idx + 1
 		var control_wire = wireboard.wires[new_idx]
 		if control_wire:
 			var gate = control_wire.wire_gates[slot.idx]
@@ -30,6 +30,7 @@ func attach_gate(other_gate, wireboard, wire):
 	#wire.process_bits(wireboard)
 
 func on_removed():
+	
 	line.remove_point(1)
 	line.set_process(false)
 	if controlled_gate:

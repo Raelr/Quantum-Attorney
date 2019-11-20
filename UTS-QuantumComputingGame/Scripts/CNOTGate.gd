@@ -13,8 +13,8 @@ func on_removed():
 		controlling_gate = null
 
 func on_insert(wireboard, wire, slot):
-	if wire.idx < wireboard.wires.size()-1:
-		var other_wire = wireboard.wires[wire.idx + 1]
+	if wire.idx > 0:
+		var other_wire = wireboard.wires[wire.idx - 1]
 		if other_wire:
 			var other = other_wire.wire_gates[slot.idx]
 			for group in other.get_groups():

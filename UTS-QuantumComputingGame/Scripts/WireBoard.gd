@@ -65,7 +65,5 @@ func get_wire_info(wire, coords):
 		return info
 
 func process_bits():
-	var end = wires.size() -1
-	for i in range(wires.size()):
-		wires[end].process_bits(self)
-		end -= 1
+	for i in range(0, wires.size()):
+		wires[i].process_bits(self)
