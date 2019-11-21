@@ -5,7 +5,6 @@ var circuit_state
 var maths = MathUtils.new()
 var gate_iterations
 var amplitude = AmplitudeCalculator.new()
-var entangled_wires = Array()
 
 func _ready():
 	wires = get_children()
@@ -30,7 +29,6 @@ func insert_gate(gate, coords):
 		gate.destroy_after_movement()
 	if wire:
 		wire.insert(gate, slot.idx)
-		gate.passed_value = wire.bit_value
 		gate.on_insert(self, wire, slot)
 		process_bits()
 
@@ -70,12 +68,8 @@ func process_bits():
 	for wire in wires:
 		wire.reset()
 	for i in range(0, gate_iterations):
-		var wire_values = Array()
 		for wire in wires:
-			var val = wire.process_bit(i)
-			if val:
-				wire_values.append(val)
-		circuit_state = maths.tensor(wire_values)
+			circuit_state = wire.process_bit(i, circuit_state)
 	print("Circuit State: ", circuit_state)
 	update_wires(amplitude.assign_amplitude(circuit_state, maths, wires.size()))
 

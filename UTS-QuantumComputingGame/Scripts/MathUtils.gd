@@ -40,3 +40,6 @@ static func kronecker(first, second):
 		for other in second.matrix:
 			rows.append(tensor([row, other]))
 	return create_mat4(rows)
+
+static func get_identity_matrix():
+	return create_mat4([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])

@@ -3,11 +3,9 @@ onready var line = get_node("ControlLine")
 var should_snap
 onready var logic_gate = LogicGate.new()
 var controlled_gate
-var passed_value
 
-func process_value():
-	if controlled_gate:
-		controlled_gate.control = passed_value
+func process_value(state):
+	return state
 
 func on_insert(wireboard, wire, slot):
 	if wire.idx >= 0 and wire.idx < wireboard.wires.size():
@@ -24,14 +22,12 @@ func attach_gate(other_gate, wireboard, wire):
 	line.set_process(true)
 	var slot = wireboard.get_wire_slot(other_gate.position)
 	line.destination = (slot.slot_info.global_position - wire.wire_positions[slot.idx].global_position)
-	controlled_gate.control = passed_value
 	controlled_gate.controlling_gate = self
 
 func on_removed():
 	line.remove_point(1)
 	line.set_process(false)
 	if controlled_gate:
-		controlled_gate.control = null
 		controlled_gate.controlling_gate = null
 		controlled_gate = null
 
