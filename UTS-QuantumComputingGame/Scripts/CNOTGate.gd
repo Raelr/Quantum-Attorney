@@ -32,9 +32,7 @@ func process_value():
 		bit_vec = cnot_matrix.get_product(cnot_matrix, tensor)
 	else:
 		if passed_value.size() != pauli_x.matrix.size():
-			print("Getting Kron")
 			var kron = maths.kronecker(maths.create_mat4([[1,0], [0,1]]), pauli_x)
-			kron.print_matrix()
 			bit_vec = kron.get_product(kron, passed_value)
 		else:
 			bit_vec = pauli_x.get_product(pauli_x, passed_value)

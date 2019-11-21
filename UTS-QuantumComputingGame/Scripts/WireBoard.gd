@@ -4,6 +4,7 @@ export (Array) var bits
 var circuit_state
 var maths = MathUtils.new()
 var gate_iterations
+var amplitude = AmplitudeCalculator.new()
 
 func _ready():
 	wires = get_children()
@@ -75,3 +76,4 @@ func process_bits():
 				wire_values.append(val)
 		circuit_state = maths.tensor(wire_values)
 	print("Circuit State: ", circuit_state)
+	amplitude.assign_amplitude(circuit_state)
