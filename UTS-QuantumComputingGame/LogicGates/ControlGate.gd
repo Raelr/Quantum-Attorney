@@ -26,10 +26,8 @@ func attach_gate(other_gate, wireboard, wire):
 	line.destination = (slot.slot_info.global_position - wire.wire_positions[slot.idx].global_position)
 	controlled_gate.control = passed_value
 	controlled_gate.controlling_gate = self
-	#wire.process_bits(wireboard)
 
 func on_removed():
-	
 	line.remove_point(1)
 	line.set_process(false)
 	if controlled_gate:

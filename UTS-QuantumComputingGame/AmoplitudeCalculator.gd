@@ -1,6 +1,6 @@
 class_name AmplitudeCalculator
 
-static func assign_amplitude(state):
+static func assign_amplitude(state, maths, wires):
 	state = sort_circuit_state(state)
 	print(state)
 	var min_bit = 0.0
@@ -10,7 +10,9 @@ static func assign_amplitude(state):
 		ranges.append(min_bit)
 	var probability = get_random_probability(ranges)
 	print("Probability: ", probability)
-	print("Chosen state: ", state[probability[0]])
+	var chosen = state[probability[0]]
+	print("Chosen state: ", chosen)
+	return maths.to_binary(chosen[0], wires)
 	
 static func get_random_probability(ranges):
 	var chance = rand_range(0, 1)

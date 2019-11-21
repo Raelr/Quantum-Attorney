@@ -21,21 +21,22 @@ static func flip_bits(bits, mat):
 static func create_mat4(rows):
 	return Mat4.new(rows)
 
-static func to_binary(number):
+static func to_binary(number, rows):
 	var bits = Array()
+	for i in range(0, rows):
+		bits.append(0)
+	var idx = 0
 	while number != 0:
-		bits.append(number % 2)
+		bits[idx] = (number % 2)
 		number = number / 2
+		idx += 1
 	bits.invert()
 	return bits
 
 static func kronecker(first, second):
 	var rows = Array()
 	for i in range(0, first.matrix.size()):
-		if not i == first.matrix.size() - 1:
-			rows.append(tensor([first.matrix[i], second.matrix[i]]))
-			rows.append(tensor([first.matrix[i], second.matrix[i + 1]]))
-		else:
-			rows.append(tensor([first.matrix[i], second.matrix[i - 1]]))
-			rows.append(tensor([first.matrix[i], second.matrix[i]]))
+		var row = first.matrix[i]
+		for other in second.matrix:
+			rows.append(tensor([row, other]))
 	return create_mat4(rows)

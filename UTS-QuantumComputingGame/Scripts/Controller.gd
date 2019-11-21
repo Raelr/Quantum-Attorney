@@ -5,6 +5,27 @@ onready var raycast = RayCastController.new()
 var target
 var is_held : bool
 var offset = Vector2()
+var maths = MathUtils.new()
+
+func _ready():
+	var state = [1, 0, 0, 0, 0, 0, 0, 0]
+	var matrix = maths.create_mat4([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+	matrix.print_matrix()
+	var mat2 = maths.create_mat4([[0, 1], [1, 0]])
+	var hademard = maths.create_mat4([[1/sqrt(2), 1/sqrt(2)], [1/sqrt(2), (-1)/sqrt(2)]])
+	var kron = maths.kronecker(matrix, mat2)
+	kron.print_matrix()
+	kron = maths.kronecker(hademard, matrix)
+	var product = kron.get_product(kron, state)
+	kron.print_matrix()
+	print(product)
+	
+	var state2 = [0,0,0,0,1,0,0,0]
+	var matrix2 = maths.create_mat4([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])
+	var other = maths.create_mat4([[1, 0], [0,1]])
+	var kron2 = maths.kronecker(matrix2, other)
+	kron2.print_matrix()
+	print("Product: ", kron2.get_product(kron2, state2))
 	
 func check_input():
 	var mouse_pos = get_global_mouse_position()

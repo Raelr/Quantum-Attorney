@@ -23,6 +23,7 @@ func initialise(status):
 	var row_1 = [1/sqrt(2), 1/sqrt(2)]
 	var row_2 = [1/sqrt(2), (-1)/sqrt(2)]
 	transform_mat = maths.create_mat4([row_1, row_2])
+	
 	set_movable(status)
 
 func destroy_after_movement():

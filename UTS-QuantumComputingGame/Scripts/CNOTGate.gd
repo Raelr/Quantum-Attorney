@@ -21,7 +21,6 @@ func on_insert(wireboard, wire, slot):
 			for group in other.get_groups():
 				if group == "Control":
 					other.attach_gate(self, wireboard, other_wire)
-					#wire.process_bits(wireboard)
 
 func process_value():
 	var bit_vec
