@@ -1,7 +1,8 @@
 extends Node
 onready var logic_gate = LogicGate.new()
 onready var maths = MathUtils.new()
-var transform_mat
+var cnot_matrix
+var pauli_x
 var should_snap
 var control
 var controlling_gate
@@ -26,11 +27,17 @@ func process_value():
 	var bit_vec
 	if control:
 		print("Control: ", control)
-		var tensor = maths.tensor_product(controlling_gate.passed_value, passed_value)
+		var tensor = maths.tensor([controlling_gate.passed_value, passed_value])
 		print("Tensor: ", tensor)
-		bit_vec = maths.get_significant_bits(transform_mat.get_product(transform_mat, tensor))
+		bit_vec = maths.get_significant_bits(cnot_matrix.get_product(cnot_matrix, tensor))
 	else:
-		bit_vec = maths.get_significant_bits(maths.flip_bits(passed_value, transform_mat))
+		if passed_value.size() != pauli_x.matrix.size():
+			print("Getting Kron")
+			var kron = maths.kronecker(maths.create_mat4([[1,0], [0,1]]), pauli_x)
+			kron.print_matrix()
+			bit_vec = kron.get_product(kron, passed_value)
+		else:
+			bit_vec = maths.get_significant_bits(pauli_x.get_product(pauli_x, passed_value))
 	print("Flipped value: ", bit_vec)
 	return bit_vec
 
@@ -40,10 +47,8 @@ func _ready():
 # TODO Abstract all of these methods into an all encompassing class group. 
 func initialise(status):
 	var row_1 = [1, 0, 0, 0]
-	var row_2 = [0, 1, 0, 0]
-	var row_3 = [0, 0, 0, 1]
-	var row_4 = [0, 0, 1, 0]
-	transform_mat = maths.create_mat4([row_1, row_2, row_3, row_4])
+	cnot_matrix = maths.create_mat4([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])
+	pauli_x = maths.create_mat4([[0,1],[1,0]])
 	set_movable(status)
 
 func destroy_after_movement():

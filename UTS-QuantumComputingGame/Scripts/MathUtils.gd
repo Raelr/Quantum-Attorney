@@ -8,12 +8,9 @@ static func tensor_product(vec_a,  vec_b):
 	return product
 
 static func tensor(vectors):
-	var tensor = Array()
-	for i in range(0, vectors.size()):
+	var tensor = tensor_product(vectors[0], vectors[1])
+	for i in range(1, vectors.size()):
 		if i < vectors.size() - 1:
-			if i == 0:
-				tensor = tensor_product(vectors[i], vectors[i + 1])
-			else:
 				tensor = tensor_product(tensor, vectors[i + 1])
 	return tensor
 
@@ -23,14 +20,25 @@ static func flip_bits(bits, mat):
 
 static func get_significant_bits(vector):
 	var significant_bits = Array()
-	
-	if (vector[0] != 0 and vector[vector.size()-1] != 0) and (vector[1] == 0 and vector[2] == 0):
-		significant_bits = vector
-	elif vector[0] == 0 and vector[0] == 0:
+		
+	if vector[0] == 0 and vector[1] == 0:
 		significant_bits = [vector[vector.size() -2], vector[vector.size() -1]]
-	else:
+	elif vector[vector[vector.size() -2]] == 0 and vector[vector.size() -1] == 0:
 		significant_bits = [vector[0], vector[1]]
+	else:
+		significant_bits = vector
 	return significant_bits
 
 static func create_mat4(rows):
 	return Mat4.new(rows)
+
+static func kronecker(first, second):
+	var rows = Array()
+	for i in range(0, first.matrix.size()):
+		if not i == first.matrix.size() - 1:
+			rows.append(tensor([first.matrix[i], second.matrix[i]]))
+			rows.append(tensor([first.matrix[i], second.matrix[i + 1]]))
+		else:
+			rows.append(tensor([first.matrix[i], second.matrix[i - 1]]))
+			rows.append(tensor([first.matrix[i], second.matrix[i]]))
+	return create_mat4(rows)

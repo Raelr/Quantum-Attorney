@@ -17,3 +17,7 @@ static func get_product(matrix, vector):
 		return result
 	else:
 		print("Invalid product sizes! Vector must have same column size as matrix rows!")
+
+func print_matrix():
+	for row in matrix:
+		print("Row: ", row)

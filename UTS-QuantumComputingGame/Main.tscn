@@ -26,16 +26,19 @@ position = Vector2( 438.086, -303.853 )
 [node name="CNOT2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 323.454, -302.921 )
 
+[node name="CNOT3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 213.939, -302.921 )
+
 [node name="Control" parent="." instance=ExtResource( 4 )]
-position = Vector2( 228.502, -298.872 )
+position = Vector2( 126.288, -298.872 )
 
 [node name="Control2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 156.74, -298.872 )
+position = Vector2( 54.5255, -298.872 )
 
 [node name="Hademard" parent="." instance=ExtResource( 5 )]
-position = Vector2( 63.2692, -302.519 )
+position = Vector2( -38.9453, -302.519 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Hademard2" parent="." instance=ExtResource( 5 )]
-position = Vector2( -58.4481, -302.519 )
+position = Vector2( -160.663, -302.519 )
 scale = Vector2( 0.8, 0.8 )

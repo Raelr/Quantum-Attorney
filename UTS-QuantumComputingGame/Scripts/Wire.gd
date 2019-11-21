@@ -58,6 +58,18 @@ func get_closest_slot(coords):
 		idx += 1
 	return closest
 
+func reset():
+	bit_value = bit.bit
+
+func process_bit(idx):
+	var gate = wire_gates[idx]
+	if not gate is Sprite:
+		gate.passed_value = bit_value
+		print("passed: ", gate.passed_value)
+		bit_value = gate.process_value()
+	
+	return bit_value
+
 func process_bits(wireboard):
 	print("Processing...:", name)
 	bit_value = bit.bit
@@ -66,6 +78,5 @@ func process_bits(wireboard):
 			node.passed_value = bit_value
 			bit_value = node.process_value()
 	print("Final: ", bit_value)
-	
 	if output.text != str(bit_value[1]):
 		output.text = str(bit_value[1])

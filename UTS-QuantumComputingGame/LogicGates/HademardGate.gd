@@ -17,10 +17,7 @@ func on_removed():
 func process_value():
 	if passed_value:
 		var result = transform_mat.get_product(transform_mat, passed_value)
-		print(result)
 		return result
-	else:
-		return passed_value
 
 func initialise(status):
 	var row_1 = [1/sqrt(2), 1/sqrt(2)]

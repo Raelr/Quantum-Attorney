@@ -3,6 +3,7 @@ var wires
 export (Array) var bits
 var circuit_state
 var maths = MathUtils.new()
+var gate_iterations
 
 func _ready():
 	wires = get_children()
@@ -14,12 +15,7 @@ func _ready():
 	for value in bits:
 		wires[idx].bit.set_bit(convert_to_vec(value))
 		idx+=1
-	
-	var all_bits = Array()
-	for value in bits:
-		all_bits.append(convert_to_vec(value))
-	
-	circuit_state = maths.tensor(all_bits)
+	gate_iterations = wires[0].wire_gates.size()
 	process_bits()
 
 func insert_gate(gate, coords):
@@ -65,5 +61,17 @@ func get_wire_info(wire, coords):
 		return info
 
 func process_bits():
-	for i in range(0, wires.size()):
-		wires[i].process_bits(self)
+	var all_bits = Array()
+	for value in bits:
+		all_bits.append(convert_to_vec(value))
+	circuit_state = maths.tensor(all_bits)
+	for wire in wires:
+		wire.reset()
+	for i in range(0, gate_iterations):
+		var wire_values = Array()
+		for wire in wires:
+			var val = wire.process_bit(i)
+			if val:
+				wire_values.append(val)
+		circuit_state = maths.tensor(wire_values)
+	print("Circuit State: ", circuit_state)
