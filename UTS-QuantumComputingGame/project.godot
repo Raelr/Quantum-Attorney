@@ -51,6 +51,10 @@ run/main_scene="res://Main.tscn"
 
 UIController="*res://Scripts/Controller.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 right_click={

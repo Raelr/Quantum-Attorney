@@ -29,7 +29,7 @@ func process_value():
 		print("Control: ", control)
 		var tensor = maths.tensor([controlling_gate.passed_value, passed_value])
 		print("Tensor: ", tensor)
-		bit_vec = maths.get_significant_bits(cnot_matrix.get_product(cnot_matrix, tensor))
+		bit_vec = cnot_matrix.get_product(cnot_matrix, tensor)
 	else:
 		if passed_value.size() != pauli_x.matrix.size():
 			print("Getting Kron")
@@ -37,7 +37,7 @@ func process_value():
 			kron.print_matrix()
 			bit_vec = kron.get_product(kron, passed_value)
 		else:
-			bit_vec = maths.get_significant_bits(pauli_x.get_product(pauli_x, passed_value))
+			bit_vec = pauli_x.get_product(pauli_x, passed_value)
 	print("Flipped value: ", bit_vec)
 	return bit_vec
 

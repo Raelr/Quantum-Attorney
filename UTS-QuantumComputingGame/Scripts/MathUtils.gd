@@ -18,19 +18,16 @@ static func flip_bits(bits, mat):
 	var tensor = tensor_product([0,1], bits)
 	return mat.get_product(mat, tensor)
 
-static func get_significant_bits(vector):
-	var significant_bits = Array()
-		
-	if vector[0] == 0 and vector[1] == 0:
-		significant_bits = [vector[vector.size() -2], vector[vector.size() -1]]
-	elif vector[vector[vector.size() -2]] == 0 and vector[vector.size() -1] == 0:
-		significant_bits = [vector[0], vector[1]]
-	else:
-		significant_bits = vector
-	return significant_bits
-
 static func create_mat4(rows):
 	return Mat4.new(rows)
+
+static func to_binary(number):
+	var bits = Array()
+	while number != 0:
+		bits.append(number % 2)
+		number = number / 2
+	bits.invert()
+	return bits
 
 static func kronecker(first, second):
 	var rows = Array()

@@ -5,7 +5,7 @@ onready var raycast = RayCastController.new()
 var target
 var is_held : bool
 var offset = Vector2()
-
+	
 func check_input():
 	var mouse_pos = get_global_mouse_position()
 	if Input.is_action_just_pressed("left_click"):
