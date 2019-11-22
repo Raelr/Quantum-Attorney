@@ -8,6 +8,7 @@ onready var top_right = Vector2(shape.global_position.x + shape.shape.extents.x,
 onready var bottom_right = Vector2(shape.global_position.x + shape.shape.extents.x, shape.global_position.y -shape.shape.extents.y)
 onready var top_left = Vector2(shape.global_position.x -shape.shape.extents.x, shape.global_position.y + shape.shape.extents.y)
 onready var output = get_node("Label")
+var entangled = false
 var idx
 
 class SlotInfo:
@@ -34,6 +35,13 @@ func remove(idx):
 	if idx < wire_gates.size() and idx >= 0:
 		gate = wire_gates[idx]
 		if !(gate is Sprite):
+			if not gate.name.find("CNOT") == -1:
+				if gate.controlling_gate and gate.control and (not gate.control == [0,1] or not gate.control == [1,0]):
+					print("DISENTANGLE")
+					entangled = false
+			elif not gate.name.find("Control") == -1:
+				if gate.controlled_gate and (not gate.passed_value == [0,1] or not gate.passed_value == [1,0]):
+					entangled = false
 			gate.logic_gate.inserted = false
 			wire_gates[idx] = wire_positions[idx]
 			gate.on_removed()
@@ -60,9 +68,18 @@ func get_closest_slot(coords):
 
 func reset():
 	bit_value = bit.bit
+	for gate in wire_gates:
+		if not gate is Sprite:
+			gate.processed = false
 
-func process_bit(idx, state):
+func process_bit(idx, wireboard):
 	var gate = wire_gates[idx]
 	if not gate is Sprite:
-		state = gate.process_value(state)
-	return state
+		gate.passed_value = bit_value
+		bit_value = gate.process_value()
+	return bit_value
+
+func update_bits():
+	for gate in wire_gates:
+		if not gate is Sprite:
+			gate.passed_value = bit_value

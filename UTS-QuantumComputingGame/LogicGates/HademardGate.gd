@@ -3,6 +3,8 @@ onready var logic_gate = LogicGate.new()
 onready var maths = MathUtils.new()
 var transform_mat
 var should_snap
+var passed_value
+var processed
 
 func _ready():
 	initialise(true)
@@ -13,10 +15,11 @@ func on_insert(wireboard, wire, slo):
 func on_removed():
 	pass
 
-func process_value(state):
-	var identity = maths.get_identity_matrix()
-	var kron = maths.kronecker(transform_mat, identity)
-	return kron.get_product(kron, state)
+func process_value():
+	if passed_value:
+		var result = transform_mat.get_product(transform_mat, passed_value)
+		processed = true
+		return result
 
 func initialise(status):
 	var row_1 = [1/sqrt(2), 1/sqrt(2)]

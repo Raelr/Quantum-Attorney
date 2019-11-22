@@ -43,3 +43,6 @@ static func kronecker(first, second):
 
 static func get_identity_matrix():
 	return create_mat4([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+
+static func get_reverse_identity_matrix():
+	return create_mat4([[0, 0, 0, 1], [0, 0, 1, 0], [0, 1, 0, 0], [1, 0, 0, 0]])

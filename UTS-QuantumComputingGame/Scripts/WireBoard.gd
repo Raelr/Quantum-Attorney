@@ -5,6 +5,7 @@ var circuit_state
 var maths = MathUtils.new()
 var gate_iterations
 var amplitude = AmplitudeCalculator.new()
+var entangled_bits = Array()
 
 func _ready():
 	wires = get_children()
@@ -46,8 +47,19 @@ func remove_gate(coords):
 	var info = get_wire_info(wire, coords)
 	if wire:
 		var removed = wire.remove(info.idx)
+		if not wire.entangled:
+			disentangle()
 		process_bits()
 		return removed
+
+func disentangle():
+	print("Disentangling")
+	for pair in entangled_bits:
+		print("Pair: ", pair)
+		for bit in pair[0]:
+			if not bit.entangled:
+				entangled_bits.erase(pair)
+				print("Removing entangled pair.")
 
 func convert_to_vec(value):
 		if value == 0: 
@@ -60,6 +72,18 @@ func get_wire_info(wire, coords):
 		var info = wire.get_closest_slot(coords)
 		return info
 
+func update_entangled_state(wire, state):
+	for pair in entangled_bits:
+		for val in pair[0]:
+			if val == wire:
+				var success = true
+				for gate in pair[1]:
+					if not gate.processed:
+						success = false
+				if success:
+							pair[0][0].bit_value = state
+							pair[0][1].bit_value = state
+
 func process_bits():
 	var all_bits = Array()
 	for value in bits:
@@ -68,8 +92,16 @@ func process_bits():
 	for wire in wires:
 		wire.reset()
 	for i in range(0, gate_iterations):
+		var wire_values = Array()
 		for wire in wires:
-			circuit_state = wire.process_bit(i, circuit_state)
+			var val = wire.process_bit(i, self)
+			if val:
+				if wire.entangled:
+					update_entangled_state(wire, val)
+				if not (wire.entangled and wire_values.find(val) != -1):
+					wire_values.append(val)
+		print("Wire_values ", wire_values)
+		circuit_state = maths.tensor(wire_values)
 	print("Circuit State: ", circuit_state)
 	update_wires(amplitude.assign_amplitude(circuit_state, maths, wires.size()))
 
