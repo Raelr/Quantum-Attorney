@@ -32,22 +32,22 @@ func on_insert(wireboard, wire, slot):
 func process_value():
 	var bit_vec
 	if control:
-		print("YEEEEEE")
-		#print("Control: ", control)
 		print("Passed: ", passed_value)
+		print("Controlliong gate: ", controlling_gate.passed_value)
 		var tensor = maths.tensor([controlling_gate.passed_value, passed_value])
-		#print("Tensor: ", tensor)
-		bit_vec = cnot_matrix.get_product(cnot_matrix, tensor)
+		print(tensor)
+		if tensor.size() != cnot_matrix.matrix.size():
+			var kron = maths.kronecker(cnot_matrix, maths.create_mat4([[1,0], [0,1]]))
+			bit_vec = kron.get_product(kron, tensor)
+		else:
+			bit_vec = cnot_matrix.get_product(cnot_matrix, tensor)
 		controlling_gate.passed_value = bit_vec
 	else:
-		print("AAAAAAA")
 		if passed_value.size() != pauli_x.matrix.size():
 			var kron = maths.kronecker(maths.create_mat4([[1,0], [0,1]]), pauli_x)
 			bit_vec = kron.get_product(kron, passed_value)
 		else:
-			("EEEEEEEE")
 			bit_vec = pauli_x.get_product(pauli_x, passed_value)
-	#print("Flipped value: ", bit_vec)
 	print(bit_vec)
 	processed = true
 	return bit_vec

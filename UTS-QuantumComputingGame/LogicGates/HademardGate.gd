@@ -17,7 +17,13 @@ func on_removed():
 
 func process_value():
 	if passed_value:
-		var result = transform_mat.get_product(transform_mat, passed_value)
+		var result
+		if passed_value.size() != transform_mat.matrix.size():
+			var kron = maths.kronecker(transform_mat, maths.create_mat4([[1,0], [0,1]]))
+			processed = true
+			result =  kron.get_product(kron, passed_value)
+		else:
+			result = transform_mat.get_product(transform_mat, passed_value)
 		processed = true
 		return result
 

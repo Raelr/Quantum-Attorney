@@ -100,7 +100,6 @@ func process_bits():
 					update_entangled_state(wire, val)
 				if not (wire.entangled and wire_values.find(val) != -1):
 					wire_values.append(val)
-		print("Wire_values ", wire_values)
 		circuit_state = maths.tensor(wire_values)
 	print("Circuit State: ", circuit_state)
 	update_wires(amplitude.assign_amplitude(circuit_state, maths, wires.size()))
