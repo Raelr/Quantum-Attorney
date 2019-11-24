@@ -4,12 +4,10 @@ var should_snap
 onready var logic_gate = LogicGate.new()
 var controlled_gate
 var passed_value
-var processed
 
 func process_value():
 	if controlled_gate:
 		controlled_gate.control = passed_value
-	processed = true
 
 func on_insert(wireboard, wire, slot):
 	if wire.idx >= 0 and wire.idx < wireboard.wires.size():

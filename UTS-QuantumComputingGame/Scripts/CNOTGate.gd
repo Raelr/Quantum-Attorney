@@ -8,7 +8,6 @@ var controlling_gate
 var entangled_bit
 var control
 var passed_value
-var processed
 
 func on_removed():
 	if controlling_gate:
@@ -46,7 +45,6 @@ func process_value():
 			bit_vec = [kron.get_product(kron, passed_value), null]
 		else:
 			bit_vec = [pauli_x.get_product(pauli_x, passed_value), null]
-	processed = true
 	if entangled_bit:
 		bit_vec[1] = entangled_bit
 	return bit_vec
