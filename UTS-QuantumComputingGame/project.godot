@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://AmoplitudeCalculator.gd"
 }, {
 "base": "Reference",
+"class": "EntangledStateManager",
+"language": "GDScript",
+"path": "res://EntangledStateManager.gd"
+}, {
+"base": "Reference",
 "class": "LogicGate",
 "language": "GDScript",
 "path": "res://Scripts/LogicGate.gd"
@@ -41,6 +46,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AmplitudeCalculator": "",
+"EntangledStateManager": "",
 "LogicGate": "",
 "LogicGateButton": "",
 "Mat4": "",

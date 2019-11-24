@@ -5,7 +5,7 @@ var cnot_matrix
 var pauli_x
 var should_snap
 var controlling_gate
-var value
+var entangled_bit
 var control
 var passed_value
 var processed
@@ -26,30 +26,29 @@ func on_insert(wireboard, wire, slot):
 					if not other_wire.wire_gates[slot.idx - 1].name.find("Hademard") == -1:
 						wire.entangled = true
 						other_wire.entangled = true
-						wireboard.entangled_bits.append([[other_wire, wire], [other_wire.wire_gates[slot.idx - 1], other, self]])
-						print("ENTANGLED")
+						entangled_bit = other_wire
+					elif other_wire.entangled:
+						wire.entangled = true
+						entangled_bit = other_wire
 
 func process_value():
 	var bit_vec
 	if control:
-		print("Passed: ", passed_value)
-		print("Controlliong gate: ", controlling_gate.passed_value)
-		var tensor = maths.tensor([controlling_gate.passed_value, passed_value])
-		print(tensor)
+		var tensor = maths.tensor([control, passed_value])
 		if tensor.size() != cnot_matrix.matrix.size():
-			var kron = maths.kronecker(cnot_matrix, maths.create_mat4([[1,0], [0,1]]))
-			bit_vec = kron.get_product(kron, tensor)
+			var kron = maths.kronecker(maths.create_mat4([[1,0], [0,1]]), cnot_matrix)
+			bit_vec = [kron.get_product(kron, tensor), null]
 		else:
-			bit_vec = cnot_matrix.get_product(cnot_matrix, tensor)
-		controlling_gate.passed_value = bit_vec
+			bit_vec = [cnot_matrix.get_product(cnot_matrix, tensor), null]
 	else:
 		if passed_value.size() != pauli_x.matrix.size():
 			var kron = maths.kronecker(maths.create_mat4([[1,0], [0,1]]), pauli_x)
-			bit_vec = kron.get_product(kron, passed_value)
+			bit_vec = [kron.get_product(kron, passed_value), null]
 		else:
-			bit_vec = pauli_x.get_product(pauli_x, passed_value)
-	print(bit_vec)
+			bit_vec = [pauli_x.get_product(pauli_x, passed_value), null]
 	processed = true
+	if entangled_bit:
+		bit_vec[1] = entangled_bit
 	return bit_vec
 
 func _ready():

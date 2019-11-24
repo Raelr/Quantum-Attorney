@@ -5,7 +5,7 @@ var circuit_state
 var maths = MathUtils.new()
 var gate_iterations
 var amplitude = AmplitudeCalculator.new()
-var entangled_bits = Array()
+var entangled_bits_manager = EntangledStateManager.new()
 
 func _ready():
 	wires = get_children()
@@ -18,6 +18,7 @@ func _ready():
 		wires[idx].bit.set_bit(convert_to_vec(value))
 		idx+=1
 	gate_iterations = wires[0].wire_gates.size()
+	entangled_bits_manager.on_create(wires)
 	process_bits()
 
 func insert_gate(gate, coords):
@@ -47,19 +48,8 @@ func remove_gate(coords):
 	var info = get_wire_info(wire, coords)
 	if wire:
 		var removed = wire.remove(info.idx)
-		if not wire.entangled:
-			disentangle()
 		process_bits()
 		return removed
-
-func disentangle():
-	print("Disentangling")
-	for pair in entangled_bits:
-		print("Pair: ", pair)
-		for bit in pair[0]:
-			if not bit.entangled:
-				entangled_bits.erase(pair)
-				print("Removing entangled pair.")
 
 func convert_to_vec(value):
 		if value == 0: 
@@ -72,20 +62,9 @@ func get_wire_info(wire, coords):
 		var info = wire.get_closest_slot(coords)
 		return info
 
-func update_entangled_state(wire, state):
-	for pair in entangled_bits:
-		for val in pair[0]:
-			if val == wire:
-				var success = true
-				for gate in pair[1]:
-					if not gate.processed:
-						success = false
-				if success:
-							pair[0][0].bit_value = state
-							pair[0][1].bit_value = state
-
 func process_bits():
 	var all_bits = Array()
+	entangled_bits_manager.reset(wires)
 	for value in bits:
 		all_bits.append(convert_to_vec(value))
 	circuit_state = maths.tensor(all_bits)
@@ -96,10 +75,14 @@ func process_bits():
 		for wire in wires:
 			var val = wire.process_bit(i, self)
 			if val:
-				if wire.entangled:
-					update_entangled_state(wire, val)
-				if not (wire.entangled and wire_values.find(val) != -1):
-					wire_values.append(val)
+				if val[1]:
+					entangled_bits_manager.update_entangled_wires(wire, val[1])
+					entangled_bits_manager.update_entangled_wires(val[1], wire)
+					entangled_bits_manager.update_entangled_states(wire, val[0])
+			if entangled_bits_manager.is_entangled(wire):
+				entangled_bits_manager.update_entangled_states(wire, val[0])
+			if not (entangled_bits_manager.is_entangled(wire) and wire_values.find(val[0]) != -1):
+				wire_values.append(val[0])
 		circuit_state = maths.tensor(wire_values)
 	print("Circuit State: ", circuit_state)
 	update_wires(amplitude.assign_amplitude(circuit_state, maths, wires.size()))

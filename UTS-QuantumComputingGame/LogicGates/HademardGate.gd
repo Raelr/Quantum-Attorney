@@ -4,7 +4,6 @@ onready var maths = MathUtils.new()
 var transform_mat
 var should_snap
 var passed_value
-var processed
 
 func _ready():
 	initialise(true)
@@ -19,12 +18,11 @@ func process_value():
 	if passed_value:
 		var result
 		if passed_value.size() != transform_mat.matrix.size():
-			var kron = maths.kronecker(transform_mat, maths.create_mat4([[1,0], [0,1]]))
-			processed = true
-			result =  kron.get_product(kron, passed_value)
+			var kron = maths.scale_vector(passed_value, transform_mat)
+			kron.print_matrix()
+			result =  [kron.get_product(kron, passed_value), null]
 		else:
-			result = transform_mat.get_product(transform_mat, passed_value)
-		processed = true
+			result = [transform_mat.get_product(transform_mat, passed_value), null]
 		return result
 
 func initialise(status):
