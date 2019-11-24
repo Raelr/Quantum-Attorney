@@ -2,7 +2,6 @@ class_name AmplitudeCalculator
 
 static func assign_amplitude(state, maths, wires):
 	state = sort_circuit_state(state)
-	print(state)
 	var min_bit = 0.0
 	var ranges = Array()
 	for value in state:
@@ -16,7 +15,6 @@ static func assign_amplitude(state, maths, wires):
 	
 static func get_random_probability(ranges):
 	var chance = rand_range(0, 1)
-	print(chance)
 	for i in range(0, ranges.size()):
 		#print("Range chosen: ", ranges[i])
 		if chance < ranges[i]:

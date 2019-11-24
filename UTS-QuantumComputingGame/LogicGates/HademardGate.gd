@@ -19,7 +19,6 @@ func process_value():
 		var result
 		if passed_value.size() != transform_mat.matrix.size():
 			var kron = maths.scale_vector(passed_value, transform_mat)
-			kron.print_matrix()
 			result =  [kron.get_product(kron, passed_value), null]
 		else:
 			result = [transform_mat.get_product(transform_mat, passed_value), null]

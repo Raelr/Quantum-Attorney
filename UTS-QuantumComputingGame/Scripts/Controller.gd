@@ -7,12 +7,6 @@ var is_held : bool
 var offset = Vector2()
 var maths = MathUtils.new()
 
-func _ready():
-	var tensor = [1, 0, 0, 0, 0, 0, 0, 0]
-	var matrix = maths.create_mat4([[1/sqrt(2), 1/sqrt(2)], [1/sqrt(2), -1/sqrt(2)]])
-	var scaled = maths.scale_vector(tensor, matrix)
-	scaled.print_matrix()
-
 func check_input():
 	var mouse_pos = get_global_mouse_position()
 	if Input.is_action_just_pressed("left_click"):

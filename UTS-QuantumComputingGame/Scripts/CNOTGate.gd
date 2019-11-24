@@ -36,13 +36,13 @@ func process_value():
 	if control:
 		var tensor = maths.tensor([control, passed_value])
 		if tensor.size() != cnot_matrix.matrix.size():
-			var kron = maths.kronecker(maths.create_mat4([[1,0], [0,1]]), cnot_matrix)
+			var kron = maths.scale_vector(tensor, cnot_matrix)
 			bit_vec = [kron.get_product(kron, tensor), null]
 		else:
 			bit_vec = [cnot_matrix.get_product(cnot_matrix, tensor), null]
 	else:
 		if passed_value.size() != pauli_x.matrix.size():
-			var kron = maths.kronecker(maths.create_mat4([[1,0], [0,1]]), pauli_x)
+			var kron = maths.scale_vector(passed_value, pauli_x)
 			bit_vec = [kron.get_product(kron, passed_value), null]
 		else:
 			bit_vec = [pauli_x.get_product(pauli_x, passed_value), null]

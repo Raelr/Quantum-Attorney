@@ -78,7 +78,6 @@ func process_bit(idx, wireboard):
 		if result:
 			bit_value = result[0]
 			end_val[0] = bit_value
-			print("RESULT ", result[1])
 			if result[1] != null:
 				end_val[1] = result[1]
 	return end_val

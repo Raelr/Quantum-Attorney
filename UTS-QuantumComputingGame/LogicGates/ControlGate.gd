@@ -19,10 +19,6 @@ func on_insert(wireboard, wire, slot):
 			var gate = control_wire.wire_gates[slot.idx]
 			if gate.name.find("CNOT") != -1:
 				attach_gate(gate, wireboard, wire)
-				if not wire.wire_gates[slot.idx-1].name.find("Hademard") == -1:
-					control_wire.entangled = true
-					wire.entangled = true
-					wireboard.entangled_bits.append([[control_wire, wire], [wire.wire_gates[slot.idx-1], self, gate]])
 
 func attach_gate(other_gate, wireboard, wire):
 	controlled_gate = other_gate

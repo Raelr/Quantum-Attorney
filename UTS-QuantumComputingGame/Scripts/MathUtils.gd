@@ -53,7 +53,6 @@ static func get_reverse_identity_matrix():
 
 static func scale_vector(tensor, matrix):
 	var iterations = (tensor.size() / matrix.matrix.size()) / 2
-	print("SCALE ITERATIONS: ", iterations)
 	var mat = matrix
 	for i in range(0,iterations):
 		mat = kronecker(create_mat4([[1,0], [0,1]]), mat)
