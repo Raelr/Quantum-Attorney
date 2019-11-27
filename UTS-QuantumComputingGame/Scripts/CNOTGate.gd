@@ -23,10 +23,12 @@ func on_insert(wireboard, wire, slot):
 				if group == "Control":
 					other.attach_gate(self, wireboard, other_wire)
 					if not other_wire.wire_gates[slot.idx - 1].name.find("Hademard") == -1:
+						print("ENTANGLED")
 						wire.entangled = true
 						other_wire.entangled = true
 						entangled_bit = other_wire
 					elif other_wire.entangled:
+						print("ENTANGLED")
 						wire.entangled = true
 						entangled_bit = other_wire
 
