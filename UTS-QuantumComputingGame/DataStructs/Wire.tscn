@@ -26,37 +26,37 @@ z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire2" type="Sprite" parent="WireSegments"]
-position = Vector2( -631.28, -10.566 )
+position = Vector2( -631.28, -10.3519 )
 scale = Vector2( 1.03, 1 )
 z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire3" type="Sprite" parent="WireSegments"]
-position = Vector2( -504.282, -10.5664 )
+position = Vector2( -504.282, -10.3523 )
 scale = Vector2( 1.03, 1 )
 z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire4" type="Sprite" parent="WireSegments"]
-position = Vector2( -377.251, -10.566 )
+position = Vector2( -377.251, -10.3519 )
 scale = Vector2( 1.03, 1 )
 z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire5" type="Sprite" parent="WireSegments"]
-position = Vector2( -254.01, -10.566 )
+position = Vector2( -254.01, -10.3519 )
 scale = Vector2( 1.03, 1 )
 z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire6" type="Sprite" parent="WireSegments"]
-position = Vector2( -127.089, -10.566 )
+position = Vector2( -127.089, -10.3519 )
 scale = Vector2( 1.03, 1 )
 z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire7" type="Sprite" parent="WireSegments"]
-position = Vector2( 0, -10.566 )
+position = Vector2( 0, -10.3519 )
 scale = Vector2( 1.03, 1 )
 z_index = -1
 texture = ExtResource( 2 )
