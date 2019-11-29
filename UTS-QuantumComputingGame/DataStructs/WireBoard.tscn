@@ -7,10 +7,10 @@
 script = ExtResource( 1 )
 
 [node name="Wire" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0.760551, -158.31 )
+position = Vector2( -6.84272, -249.395 )
 
 [node name="Wire2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0.760551, 0 )
+position = Vector2( -6.80009, -0.370674 )
 
 [node name="Wire4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0.760551, 158.497 )
+position = Vector2( -7.33524, 249.166 )

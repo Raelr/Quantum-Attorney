@@ -1,17 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Wire.gd" type="Script" id=1]
-[ext_resource path="res://Images/Wire.png" type="Texture" id=2]
+[ext_resource path="res://Images/WireSlot128.png" type="Texture" id=2]
 [ext_resource path="res://LogicGates/Bit.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Images/Bit.png" type="Texture" id=4]
+[ext_resource path="res://Images/GateSlotBubble.png" type="Texture" id=4]
 [ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Images/Bit.png" type="Texture" id=6]
+[ext_resource path="res://Images/SuspectBooth128.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 491.818, 105.844 )
+extents = Vector2( 491.818, 124.654 )
 
 [node name="Wire" type="Node2D"]
 position = Vector2( 0.620178, 0.507 )
-scale = Vector2( 0.996926, 0.748525 )
 z_index = -1
 script = ExtResource( 1 )
 
@@ -19,53 +20,87 @@ script = ExtResource( 1 )
 position = Vector2( 431.348, 0 )
 
 [node name="Wire1" type="Sprite" parent="WireSegments"]
-position = Vector2( -758.77, 0 )
+position = Vector2( -762.35, -10.3168 )
+scale = Vector2( 1.03, 1 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire2" type="Sprite" parent="WireSegments"]
-position = Vector2( -631.28, 0 )
+position = Vector2( -631.28, -10.566 )
+scale = Vector2( 1.03, 1 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire3" type="Sprite" parent="WireSegments"]
-position = Vector2( -504.282, 0 )
+position = Vector2( -504.282, -10.5664 )
+scale = Vector2( 1.03, 1 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire4" type="Sprite" parent="WireSegments"]
-position = Vector2( -377.251, 0 )
+position = Vector2( -377.251, -10.566 )
+scale = Vector2( 1.03, 1 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire5" type="Sprite" parent="WireSegments"]
-position = Vector2( -254.01, 0 )
+position = Vector2( -254.01, -10.566 )
+scale = Vector2( 1.03, 1 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire6" type="Sprite" parent="WireSegments"]
-position = Vector2( -127.089, 0 )
+position = Vector2( -127.089, -10.566 )
+scale = Vector2( 1.03, 1 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wire7" type="Sprite" parent="WireSegments"]
+position = Vector2( 0, -10.566 )
+scale = Vector2( 1.03, 1 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Bit" parent="." instance=ExtResource( 3 )]
-position = Vector2( -442.141, 0 )
-scale = Vector2( 1, 1.3 )
+position = Vector2( -492.595, -15.042 )
+
+[node name="GateSlotBubble" type="Sprite" parent="."]
+position = Vector2( -391.687, -129.488 )
+scale = Vector2( 1.03, 1 )
+texture = ExtResource( 4 )
+
+[node name="Label2" parent="GateSlotBubble" instance=ExtResource( 5 )]
+margin_left = -71.6874
+margin_top = -50.3512
+margin_right = 383.313
+margin_bottom = 204.649
+rect_scale = Vector2( 0.310724, 0.386545 )
+text = "I didn't 
+do it!"
+autowrap = true
 
 [node name="Area2D" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 52.2972, 1.63888 )
 scale = Vector2( 1.01, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -51.8602, 0 )
+position = Vector2( -51.2537, 0 )
 shape = SubResource( 1 )
 
 [node name="Bit2" type="Sprite" parent="."]
-position = Vector2( 545.795, 0.197311 )
-scale = Vector2( 0.802185, 1.0713 )
-texture = ExtResource( 4 )
+position = Vector2( 550.101, 0.197311 )
+scale = Vector2( 0.830697, 0.835852 )
+texture = ExtResource( 6 )
+
+[node name="SuspectBooth128" type="Sprite" parent="."]
+position = Vector2( -492.392, -4.84994 )
+scale = Vector2( 1.48718, 1.48718 )
+z_index = -1
+texture = ExtResource( 7 )
 
 [node name="Label" parent="." instance=ExtResource( 5 )]
-margin_left = 518.094
-margin_top = -100.275
-margin_right = 573.094
-margin_bottom = 53.7248
-rect_scale = Vector2( 1.01919, 1.26789 )
+margin_left = 522.453
+margin_top = -99.6598
+margin_right = 577.453
+margin_bottom = 54.34
+rect_scale = Vector2( 1.01395, 1.26137 )

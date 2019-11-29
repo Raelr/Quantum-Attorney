@@ -65,6 +65,8 @@ UIController="*res://Scripts/Controller.gd"
 
 [display]
 
+window/size/width=1600
+window/size/height=900
 window/stretch/mode="viewport"
 
 [input]
