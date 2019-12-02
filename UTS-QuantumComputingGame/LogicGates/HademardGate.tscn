@@ -4,7 +4,7 @@
 [ext_resource path="res://Images/Hademard.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64.0737, 64.1061 )
+extents = Vector2( 64.0737, 56.3778 )
 
 [node name="Hademard" type="KinematicBody2D" groups=[
 "LogicGate",
@@ -15,4 +15,6 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2.10129 )
+scale = Vector2( 0.875008, 1.10501 )
 shape = SubResource( 1 )

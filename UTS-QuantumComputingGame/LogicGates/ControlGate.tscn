@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://LogicGates/ControlGate.gd" type="Script" id=1]
-[ext_resource path="res://Images/ControlGate.png" type="Texture" id=2]
+[ext_resource path="res://Images/Control-Sprite.png" type="Texture" id=2]
 [ext_resource path="res://ControlLine.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 32.2872
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 54.2722, 62.2782 )
 
 [node name="Control" type="KinematicBody2D" groups=[
 "Control",
@@ -17,6 +17,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 6.15498, -1.89384 )
 shape = SubResource( 1 )
 
 [node name="ControlLine" parent="." instance=ExtResource( 3 )]

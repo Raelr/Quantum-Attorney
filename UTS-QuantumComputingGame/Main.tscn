@@ -4,7 +4,7 @@
 [ext_resource path="res://Images/GateSlotBubble.png" type="Texture" id=2]
 [ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=3]
 [ext_resource path="res://DataStructs/WireBoard.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/BitGateButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Images/UI_panel.png" type="Texture" id=5]
 [ext_resource path="res://LogicGates/CNOTGate.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LogicGates/ControlGate.tscn" type="PackedScene" id=7]
 [ext_resource path="res://LogicGates/HademardGate.tscn" type="PackedScene" id=8]
@@ -13,15 +13,18 @@
 [sub_resource type="Theme" id=1]
 
 [node name="Node2D" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ -754.132 ]
+}
 
 [node name="Jury512" type="Sprite" parent="."]
-position = Vector2( 561.608, 47.2889 )
+position = Vector2( 559.868, -154.941 )
 scale = Vector2( 2.4422, 2.85517 )
 texture = ExtResource( 1 )
 
 [node name="JuryDialogue" type="Sprite" parent="."]
 editor/display_folded = true
-position = Vector2( 690.839, -204.144 )
+position = Vector2( 690.839, -406.374 )
 scale = Vector2( 2.1889, 2.04844 )
 texture = ExtResource( 2 )
 
@@ -52,7 +55,7 @@ align = 0
 
 [node name="JuryDialogue3" type="Sprite" parent="."]
 editor/display_folded = true
-position = Vector2( 690.839, 123.832 )
+position = Vector2( 690.839, -78.3982 )
 scale = Vector2( 2.1889, 2.04844 )
 texture = ExtResource( 2 )
 
@@ -81,40 +84,50 @@ text = "GUILTY!"
 align = 0
 
 [node name="WireBoard" parent="." instance=ExtResource( 4 )]
-position = Vector2( -202.524, 52.9576 )
+position = Vector2( -202.524, -149.273 )
 bits = [ 0.0, 0.0, 0.0 ]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -71.2992 )
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 1.3, 1.3 )
 
-[node name="BitButton" parent="." instance=ExtResource( 5 )]
-position = Vector2( 697.739, -384.627 )
-scale = Vector2( 0.8, 0.779 )
+[node name="UI_panel" type="Sprite" parent="."]
+position = Vector2( 5.20166, 493.074 )
+scale = Vector2( 6.80118, 6.80118 )
+z_index = -1
+texture = ExtResource( 5 )
 
 [node name="CNOT" parent="." instance=ExtResource( 6 )]
-position = Vector2( 587.292, -381.621 )
+position = Vector2( -140.522, 393.033 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="CNOT2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 481.722, -378.939 )
+position = Vector2( -285.803, 395.715 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="CNOT3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 373.925, -380.926 )
+position = Vector2( -421.189, 393.729 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="Control" parent="." instance=ExtResource( 7 )]
-position = Vector2( 281.168, -377.141 )
+position = Vector2( 230.15, 397.514 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="Control2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 204.917, -378.703 )
+position = Vector2( 98.6894, 395.951 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="Hademard" parent="." instance=ExtResource( 8 )]
-position = Vector2( -183.008, -379.509 )
+position = Vector2( -736.57, 391.325 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="Hademard2" parent="." instance=ExtResource( 8 )]
-position = Vector2( -329.818, -380.702 )
+position = Vector2( -587.453, 390.131 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="Carpet" type="Sprite" parent="."]
-position = Vector2( 13.2849, 47.9165 )
+position = Vector2( 13.2849, -169.87 )
 scale = Vector2( 1.76607, 1.89906 )
 z_index = -4
 texture = ExtResource( 9 )
