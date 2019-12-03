@@ -7,7 +7,7 @@
 [ext_resource path="res://Images/UI_panel.png" type="Texture" id=5]
 [ext_resource path="res://LogicGates/CNOTGate.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LogicGates/ControlGate.tscn" type="PackedScene" id=7]
-[ext_resource path="res://LogicGates/HademardGate.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/HademardButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Images/Carpet.png" type="Texture" id=9]
 [ext_resource path="res://Images/WoodenTileDark.png" type="Texture" id=10]
 [ext_resource path="res://Images/WoodenTile.png" type="Texture" id=11]
@@ -20,7 +20,7 @@ __meta__ = {
 }
 
 [node name="Jury512" type="Sprite" parent="."]
-position = Vector2( 559.868, -154.941 )
+position = Vector2( 1023.75, -154.941 )
 scale = Vector2( 2.4422, 2.85517 )
 texture = ExtResource( 1 )
 
@@ -120,12 +120,8 @@ scale = Vector2( 1.2, 1.2 )
 position = Vector2( 52.5657, 401.128 )
 scale = Vector2( 1.2, 1.2 )
 
-[node name="Hademard" parent="." instance=ExtResource( 8 )]
-position = Vector2( -782.693, 396.501 )
-scale = Vector2( 1.2, 1.2 )
-
-[node name="Hademard2" parent="." instance=ExtResource( 8 )]
-position = Vector2( -633.577, 395.308 )
+[node name="HademardButton" parent="." instance=ExtResource( 8 )]
+position = Vector2( -786.645, 394.147 )
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Carpet" type="Sprite" parent="."]
