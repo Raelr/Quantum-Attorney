@@ -11,6 +11,3 @@ position = Vector2( -6.84272, -268.104 )
 
 [node name="Wire2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -6.80009, 3.60349 )
-
-[node name="Wire4" parent="." instance=ExtResource( 2 )]
-position = Vector2( -7.33524, 280.959 )
