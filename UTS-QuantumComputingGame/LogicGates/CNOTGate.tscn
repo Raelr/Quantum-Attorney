@@ -9,7 +9,6 @@ extents = Vector2( 54.626, 62.1344 )
 [node name="CNOT" type="KinematicBody2D" groups=[
 "LogicGate",
 ]]
-scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

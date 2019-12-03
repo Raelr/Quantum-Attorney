@@ -1,0 +1,175 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/JurySpeech.gd" type="Script" id=1]
+[ext_resource path="res://Images/GateSlotBubble.png" type="Texture" id=2]
+[ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=3]
+resource_name = "enlarge"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.00854492, 0.104492 ), Vector2( 0.00854492, 0.104492 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2, 2 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "rest"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.00854492, 0.104492 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "shrink"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.00854492, 0.104492 ), Vector2( 0.00854492, 0.104492 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[node name="JurySpeech" type="Node2D"]
+script = ExtResource( 1 )
+colors = [ Color( 0, 0.513726, 0.0666667, 1 ), Color( 0.709804, 0.117647, 0, 1 ) ]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.00854492, 0.104492 )
+scale = Vector2( 1e-05, 1e-05 )
+z_index = -1
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 0, -128.22 )
+
+[node name="PersonA" parent="Sprite" instance=ExtResource( 3 )]
+margin_left = 5.86222
+margin_top = -106.746
+margin_right = 209.862
+margin_bottom = -64.7456
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Person A is: "
+
+[node name="PersonAVerdict" parent="Sprite" instance=ExtResource( 3 )]
+modulate = Color( 0, 0.513726, 0.0666667, 1 )
+margin_left = 16.4876
+margin_top = -93.8554
+margin_right = 171.488
+margin_bottom = -51.8554
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Innocent!"
+
+[node name="PersonB" parent="Sprite" instance=ExtResource( 3 )]
+margin_left = 5.59838
+margin_top = -62.2161
+margin_right = 209.598
+margin_bottom = -20.2161
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Person B is: "
+
+[node name="PersonBVerdict" parent="Sprite" instance=ExtResource( 3 )]
+modulate = Color( 0.709804, 0.117647, 0, 1 )
+margin_left = 24.4532
+margin_top = -45.1944
+margin_right = 141.453
+margin_bottom = -3.19444
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Guilty!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/enlarge = SubResource( 3 )
+anims/rest = SubResource( 1 )
+anims/shrink = SubResource( 2 )
