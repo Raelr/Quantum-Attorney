@@ -85,7 +85,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "shrink"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
@@ -118,12 +117,14 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 2, 2 ),
+"transitions": PoolRealArray( 2, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
-[node name="JurySpeech" type="Node2D"]
+[node name="JurySpeech" type="Node2D" groups=[
+"Speech",
+]]
 script = ExtResource( 1 )
 colors = [ Color( 0, 0.513726, 0.0666667, 1 ), Color( 0.709804, 0.117647, 0, 1 ) ]
 

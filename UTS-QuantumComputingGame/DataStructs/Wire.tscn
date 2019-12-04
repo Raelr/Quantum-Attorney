@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Wire.gd" type="Script" id=1]
 [ext_resource path="res://Images/WireSlot128.png" type="Texture" id=2]
 [ext_resource path="res://LogicGates/Bit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Images/GateSlotBubble.png" type="Texture" id=4]
 [ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Images/Bit.png" type="Texture" id=6]
-[ext_resource path="res://Images/SuspectBooth128.png" type="Texture" id=7]
+[ext_resource path="res://Images/SuspectBooth128.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 491.818, 124.654 )
@@ -87,20 +86,8 @@ scale = Vector2( 1.01, 1 )
 position = Vector2( -51.2537, 0 )
 shape = SubResource( 1 )
 
-[node name="Bit2" type="Sprite" parent="."]
-position = Vector2( 550.101, 0.197311 )
-scale = Vector2( 0.830697, 0.835852 )
-texture = ExtResource( 6 )
-
 [node name="SuspectBooth128" type="Sprite" parent="."]
 position = Vector2( -492.392, -4.84994 )
 scale = Vector2( 1.48718, 1.48718 )
 z_index = -1
-texture = ExtResource( 7 )
-
-[node name="Label" parent="." instance=ExtResource( 5 )]
-margin_left = 522.453
-margin_top = -99.6598
-margin_right = 577.453
-margin_bottom = 54.34
-rect_scale = Vector2( 1.01395, 1.26137 )
+texture = ExtResource( 6 )

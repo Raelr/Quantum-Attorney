@@ -10,7 +10,7 @@ func process_value():
 		controlled_gate.control = passed_value
 
 func on_insert(wireboard, wire, slot):
-	if wire.idx >= 0 and wire.idx < wireboard.wires.size():
+	if wire.idx >= 0 and wire.idx < wireboard.wires.size() - 1:
 		var new_idx = wire.idx + 1
 		var control_wire = wireboard.wires[new_idx]
 		if control_wire:

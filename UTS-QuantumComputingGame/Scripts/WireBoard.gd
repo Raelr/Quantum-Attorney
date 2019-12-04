@@ -1,14 +1,18 @@
 extends Node2D
-var wires
+var wires = Array()
 export (Array) var bits
 var circuit_state
 var maths = MathUtils.new()
 var gate_iterations
 var amplitude = AmplitudeCalculator.new()
 var entangled_bits_manager = EntangledStateManager.new()
+onready var jury = $Jury512
+var previous_state
 
 func _ready():
 	wires = get_children()
+	wires.remove(wires.size() - 1)
+	jury.setup()
 	var idx = 0
 	for wire in wires:
 		wire.idx = idx
@@ -84,9 +88,14 @@ func process_bits():
 			if not (entangled_bits_manager.is_entangled(wire) and wire_values.find(val[0]) != -1):
 				wire_values.append(val[0])
 		circuit_state = maths.tensor(wire_values)
-		print(wire_values)
 	print("Circuit State: ", circuit_state)
-	update_wires(amplitude.assign_amplitude(circuit_state, maths, wires.size()))
+	print("Previous: ", previous_state)
+	if not circuit_state == previous_state:
+		var amplitudes = amplitude.extract_amplitude(circuit_state, maths, wires.size())
+		jury.reset()
+		for amp in amplitudes:
+			jury.activate_next(amp)
+		previous_state = circuit_state
 
 func update_wires(wire_vals):
 	for i in range(0, wire_vals.size()):
