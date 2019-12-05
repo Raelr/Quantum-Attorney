@@ -1,5 +1,6 @@
 extends Node2D
 var wires = Array()
+const util = preload("Util.gd")
 export (Array) var bits
 var circuit_state
 var maths = MathUtils.new()
@@ -33,8 +34,9 @@ func insert_gate(gate, coords):
 		gate.set_destination(slot.slot_info.global_position, false)
 	else:
 		gate.destroy_after_movement()
+		process_bits()
 	if wire:
-		wire.insert(gate, slot.idx)
+		wire.insert(gate, slot.idx, self)
 		gate.on_insert(self, wire, slot)
 		process_bits()
 
@@ -52,7 +54,8 @@ func remove_gate(coords):
 	var info = get_wire_info(wire, coords)
 	if wire:
 		var removed = wire.remove(info.idx)
-		process_bits()
+		if util.get_distance(info.slot_info.global_position, removed.global_position) > 0.1:
+			process_bits()
 		return removed
 
 func convert_to_vec(value):
@@ -100,3 +103,12 @@ func process_bits():
 func update_wires(wire_vals):
 	for i in range(0, wire_vals.size()):
 		wires[i].output.text = str(wire_vals[i])
+
+func check_proximity(gate):
+	var success = false
+	var wire = get_wire(gate)
+	var info = get_wire_info(wire, gate)
+	if wire:
+		if util.get_distance(info.slot_info.global_position, gate) > 0.1:
+			success = true
+	return success

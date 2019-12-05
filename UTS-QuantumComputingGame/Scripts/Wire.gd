@@ -15,20 +15,28 @@ class SlotInfo:
 	var slot_info
 	var idx
  
-func insert(gate, idx):
+func insert(gate, idx, wireboard):
+	var reprocess = false
 	if idx < wire_gates.size() and idx >= 0:
 		var existing_value = wire_gates[idx]
 		if !(existing_value is Sprite) and existing_value != self:
 			destroy_gate(existing_value)
+			wireboard.process_bits()
 		gate.logic_gate.inserted = true
 		wire_gates[idx] = gate
 
 func destroy_gate(gate):
-	var btn = get_tree().get_nodes_in_group("bitButton")[0]
-	gate.remove_from_group("LogicGate")
-	gate.logic_gate.destroy = true
-	gate.set_movable(false) 
-	gate.set_destination(btn.position, false)
+	var name = gate.name.split("@")
+	if name.size() > 1:
+		name = name[1] + "_button"
+	else:
+		name = name[0] + "_button"
+	var btn = get_tree().get_nodes_in_group(name)
+	if btn.size() > 0:
+		gate.remove_from_group("LogicGate")
+		gate.logic_gate.destroy = true
+		gate.set_movable(false) 
+		gate.set_destination(btn[0].position, false)
 
 func remove(idx):
 	var gate
@@ -37,7 +45,6 @@ func remove(idx):
 		if !(gate is Sprite):
 			if not gate.name.find("CNOT") == -1:
 				if gate.controlling_gate and gate.control and (not gate.control == [0,1] or not gate.control == [1,0]):
-					print("DISENTANGLE")
 					entangled = false
 			elif not gate.name.find("Control") == -1:
 				if gate.controlled_gate and (not gate.passed_value == [0,1] or not gate.passed_value == [1,0]):

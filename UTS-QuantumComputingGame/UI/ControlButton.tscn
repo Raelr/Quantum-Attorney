@@ -7,7 +7,7 @@
 extents = Vector2( 54.1351, 61.498 )
 
 [node name="ControlButton" type="KinematicBody2D" groups=[
-"ControlButton",
+"Control_button",
 ]]
 script = ExtResource( 1 )
 

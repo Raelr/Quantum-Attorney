@@ -9,14 +9,15 @@ var is_held : bool
 var offset = Vector2()
 var maths = MathUtils.new()
 
-func check_input():
+func check_input(delta):
 	var mouse_pos = get_global_mouse_position()
 	if Input.is_action_just_pressed("left_click"):
-		target = set_target(raycast.raycast_for_groups(self, mouse_pos, ["LogicGate", "Button"]))
+		
+		target = set_target(raycast.raycast_for_groups(self, mouse_pos, ["LogicGate", "button"]))
 		if target:
 			offset = util.get_offset(target.position, mouse_pos, position)
 	elif Input.is_action_pressed("left_click") and !is_held:
-		is_held = true
+			is_held = true
 	elif Input.is_action_just_released("left_click") and target:
 		target = remove_target(target)
 	if target:
@@ -39,7 +40,9 @@ func set_target(new_target):
 	return new_target
 
 func check_if_button(target):
+	print("EEEEE")
 	if target.name.find("Button") != -1:
+		print("AAAAA")
 		target = target.on_click(target.position, self)
 	return target
 
@@ -52,4 +55,4 @@ func remove_target(target):
 	return target
 
 func _process(delta):
-	check_input()
+	check_input(delta)
