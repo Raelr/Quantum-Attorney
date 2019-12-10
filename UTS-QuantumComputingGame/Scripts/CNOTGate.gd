@@ -1,6 +1,7 @@
 extends Node
 onready var logic_gate = LogicGate.new()
 onready var maths = MathUtils.new()
+var state_checker = StateChecker.new()
 var cnot_matrix
 var pauli_x
 var should_snap
@@ -22,16 +23,7 @@ func on_insert(wireboard, wire, slot):
 			for group in other.get_groups():
 				if group == "Control":
 					other.attach_gate(self, wireboard, other_wire)
-					if not (other_wire.wire_gates[slot.idx - 1].name.find("Hademard") == -1) \
-					 or  not (control == [1,0] or control == [0,1]):
-						print("ENTANGLED")
-						wire.entangled = true
-						other_wire.entangled = true
-						entangled_bit = other_wire
-					elif other_wire.entangled:
-						print("ENTANGLED")
-						wire.entangled = true
-						entangled_bit = other_wire
+					entangled_bit  = other_wire
 
 func process_value():
 	var bit_vec
@@ -48,8 +40,15 @@ func process_value():
 			bit_vec = [kron.get_product(kron, passed_value), null]
 		else:
 			bit_vec = [pauli_x.get_product(pauli_x, passed_value), null]
-	if entangled_bit:
+	
+	var factored = state_checker.factor_state(bit_vec[0])
+	if not factored:
+		print("PASSING VALUE BACK TO ENTANGLED STATE")
 		bit_vec[1] = entangled_bit
+	else:
+		if control:
+			entangled_bit.bit_value = factored[1]
+			bit_vec[0] = factored[0]
 	return bit_vec
 
 func _ready():
@@ -68,6 +67,9 @@ func destroy_after_movement():
 	set_movable(false)
 	remove_from_group("LogicGate")
 	logic_gate.destination = get_button()
+
+static func is_entangled(state):
+	return state == [1/sqrt(2), 0, 0, 1/sqrt(2)] or state == [0, 1/sqrt(2), 1/sqrt(2), 0]
 
 func get_button():
 	return get_tree().get_nodes_in_group("CNOT_button")[0].position

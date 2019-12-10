@@ -86,6 +86,8 @@ func process_bit(idx, wireboard):
 			bit_value = result[0]
 			end_val[0] = bit_value
 			if result[1] != null:
+				result[1].entangled = true
+				entangled = true
 				end_val[1] = result[1]
 	return end_val
 

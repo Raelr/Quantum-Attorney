@@ -40,9 +40,7 @@ func set_target(new_target):
 	return new_target
 
 func check_if_button(target):
-	print("EEEEE")
 	if target.name.find("Button") != -1:
-		print("AAAAA")
 		target = target.on_click(target.position, self)
 	return target
 
