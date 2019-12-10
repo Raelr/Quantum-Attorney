@@ -28,7 +28,16 @@ func on_insert(wireboard, wire, slot):
 func process_value():
 	var bit_vec
 	if control:
-		var tensor = maths.tensor([control, passed_value])
+		var factors = state_checker.factor_state(passed_value)
+		var tensor
+		if factors:
+			if factors.size() == 1:
+				tensor = maths.tensor([control, passed_value])
+			elif factors.size > 1:
+				tensor = maths.tensor(factors[1], factors[0])
+		else:
+			tensor = passed_value
+			
 		if tensor.size() != cnot_matrix.matrix.size():
 			var kron = maths.scale_vector(tensor, cnot_matrix)
 			bit_vec = [kron.get_product(kron, tensor), null]

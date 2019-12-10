@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Wire.gd" type="Script" id=1]
 [ext_resource path="res://Images/WireSlot128.png" type="Texture" id=2]
 [ext_resource path="res://LogicGates/Bit.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Images/GateSlotBubble.png" type="Texture" id=4]
-[ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Images/SuspectBooth128.png" type="Texture" id=6]
+[ext_resource path="res://Images/SuspectBooth128.png" type="Texture" id=4]
+[ext_resource path="res://UI/SuspectSpeech.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 491.818, 124.654 )
@@ -63,21 +62,6 @@ texture = ExtResource( 2 )
 [node name="Bit" parent="." instance=ExtResource( 3 )]
 position = Vector2( -492.595, -15.042 )
 
-[node name="GateSlotBubble" type="Sprite" parent="."]
-position = Vector2( -391.687, -129.488 )
-scale = Vector2( 1.03, 1 )
-texture = ExtResource( 4 )
-
-[node name="Label2" parent="GateSlotBubble" instance=ExtResource( 5 )]
-margin_left = -71.6874
-margin_top = -50.3512
-margin_right = 383.313
-margin_bottom = 204.649
-rect_scale = Vector2( 0.310724, 0.386545 )
-text = "I didn't 
-do it!"
-autowrap = true
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 52.2972, 1.63888 )
 scale = Vector2( 1.01, 1 )
@@ -90,4 +74,8 @@ shape = SubResource( 1 )
 position = Vector2( -492.392, -4.84994 )
 scale = Vector2( 1.48718, 1.48718 )
 z_index = -1
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" parent="." instance=ExtResource( 5 )]
+position = Vector2( -366.833, -164.064 )
+scale = Vector2( 1.39376, 1.39376 )

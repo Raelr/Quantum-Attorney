@@ -1,10 +1,11 @@
 class_name StateChecker
-const FLOAT_EPSILON = 0.01
+const FLOAT_EPSILON = 0.000001
 
 static func factor_state(state):
 	var factor = null
+	print("START STATE: ", state)
 	if state.size() == 2:
-		return state
+		return [state]
 	if state == [1,0,0,0]:
 		factor = [[1,0], [1,0]]
 	elif state == [0,1,0,0]:
@@ -25,7 +26,8 @@ static func factor_state(state):
 
 static func compare(left, right, epsilon = FLOAT_EPSILON):
 	var same_sign = sign(left) == sign(right)
-	return same_sign and left - right <= FLOAT_EPSILON
+	print(abs(left) - abs(right) <= FLOAT_EPSILON)
+	return same_sign and (abs(left) - abs(right)) <= FLOAT_EPSILON
 
 static func array_eq(left, right):
 	var same = true
