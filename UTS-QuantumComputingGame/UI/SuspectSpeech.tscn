@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Images/GateSlotBubble.png" type="Texture" id=1]
-[ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/SuspectSpeech.gd" type="Script" id=2]
+[ext_resource path="res://UI/PixelArtText.tscn" type="PackedScene" id=3]
 
 [node name="SuspectSpeech" type="Sprite"]
 position = Vector2( -0.183807, 0 )
 texture = ExtResource( 1 )
+script = ExtResource( 2 )
 
-[node name="Top" parent="." instance=ExtResource( 2 )]
-visible = false
+[node name="Top" parent="." instance=ExtResource( 3 )]
 margin_left = -53.8811
 margin_top = -64.9415
 margin_right = 131.559
@@ -16,8 +17,9 @@ margin_bottom = 63.0585
 rect_scale = Vector2( 0.5086, 0.5086 )
 text = "I may have done it."
 autowrap = true
+percent_visible = 0.0
 
-[node name="Center" parent="." instance=ExtResource( 2 )]
+[node name="Center" parent="." instance=ExtResource( 3 )]
 margin_left = -53.8811
 margin_top = -39.5463
 margin_right = 131.559
@@ -26,8 +28,7 @@ rect_scale = Vector2( 0.5086, 0.5086 )
 text = "I did it!"
 autowrap = true
 
-[node name="Bottom" parent="." instance=ExtResource( 2 )]
-visible = false
+[node name="Bottom" parent="." instance=ExtResource( 3 )]
 margin_left = -53.8811
 margin_top = -9.87613
 margin_right = 131.559
@@ -35,3 +36,4 @@ margin_bottom = 118.124
 rect_scale = Vector2( 0.5086, 0.5086 )
 text = "Person B was with me!"
 autowrap = true
+percent_visible = 0.0

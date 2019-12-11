@@ -9,9 +9,11 @@ script = ExtResource( 1 )
 
 [node name="Wire" parent="." instance=ExtResource( 2 )]
 position = Vector2( -6.84272, -317.218 )
+other_person = "Person B"
 
 [node name="Wire2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -6.80009, 53.5014 )
+other_person = "Person A"
 
 [node name="Jury512" parent="." instance=ExtResource( 3 )]
 position = Vector2( 764.624, -127.396 )

@@ -8,12 +8,18 @@ onready var top_right = Vector2(shape.global_position.x + shape.shape.extents.x,
 onready var bottom_right = Vector2(shape.global_position.x + shape.shape.extents.x, shape.global_position.y -shape.shape.extents.y)
 onready var top_left = Vector2(shape.global_position.x -shape.shape.extents.x, shape.global_position.y + shape.shape.extents.y)
 onready var output = get_node("Label")
+onready var state_checker = StateChecker.new()
+onready var speech = $SuspectSpeech
+export (String) var other_person
 var entangled = false
 var idx
 
 class SlotInfo:
 	var slot_info
 	var idx
+
+func _ready():
+	speech.other = other_person
  
 func insert(gate, idx, wireboard):
 	var reprocess = false
@@ -89,6 +95,8 @@ func process_bit(idx, wireboard):
 				result[1].entangled = true
 				entangled = true
 				end_val[1] = result[1]
+	var factored = state_checker.factor_state(end_val[0])
+	speech.change_testemony(factored)
 	return end_val
 
 func update_bits():

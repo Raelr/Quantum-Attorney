@@ -10,7 +10,7 @@
 extents = Vector2( 491.818, 124.654 )
 
 [node name="Wire" type="Node2D"]
-position = Vector2( 0.620178, 0.507 )
+position = Vector2( -0.0735476, 0.507 )
 z_index = -1
 script = ExtResource( 1 )
 
@@ -76,6 +76,6 @@ scale = Vector2( 1.48718, 1.48718 )
 z_index = -1
 texture = ExtResource( 4 )
 
-[node name="Sprite" parent="." instance=ExtResource( 5 )]
+[node name="SuspectSpeech" parent="." instance=ExtResource( 5 )]
 position = Vector2( -366.833, -164.064 )
 scale = Vector2( 1.39376, 1.39376 )
