@@ -1,6 +1,7 @@
 extends Node2D
 onready var bit = $Bit
 onready var bit_value = bit.bit
+var old_state
 onready var wire_positions = $WireSegments.get_children()
 onready var wire_gates = $WireSegments.get_children()
 onready var shape = get_node("Area2D/CollisionShape2D")
@@ -20,6 +21,8 @@ class SlotInfo:
 
 func _ready():
 	speech.other = other_person
+	speech.change_testemony([1,0])
+	old_state = [1,0]
  
 func insert(gate, idx, wireboard):
 	var reprocess = false
@@ -95,9 +98,15 @@ func process_bit(idx, wireboard):
 				result[1].entangled = true
 				entangled = true
 				end_val[1] = result[1]
-	var factored = state_checker.factor_state(end_val[0])
-	speech.change_testemony(factored)
 	return end_val
+
+func update_testemony():
+	var factored = state_checker.factor_state(bit_value)
+	if factored:
+		factored = factored[0]
+	if (not state_checker.array_eq(factored, old_state)):
+		speech.change_testemony(factored)
+	old_state = factored
 
 func update_bits():
 	for gate in wire_gates:

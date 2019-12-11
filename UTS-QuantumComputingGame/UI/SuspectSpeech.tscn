@@ -8,6 +8,7 @@
 position = Vector2( -0.183807, 0 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+scrollDuration = 0.75
 
 [node name="Top" parent="." instance=ExtResource( 3 )]
 margin_left = -53.8811
@@ -27,6 +28,7 @@ margin_bottom = 88.4537
 rect_scale = Vector2( 0.5086, 0.5086 )
 text = "I did it!"
 autowrap = true
+percent_visible = 0.0
 
 [node name="Bottom" parent="." instance=ExtResource( 3 )]
 margin_left = -53.8811

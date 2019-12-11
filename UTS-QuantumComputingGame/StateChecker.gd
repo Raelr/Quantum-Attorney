@@ -29,9 +29,12 @@ static func compare(left, right, epsilon = FLOAT_EPSILON):
 
 static func array_eq(left, right):
 	var same = true
-	var size = left.size()
-	for i in range(0, size):
-		if not compare(left[i], right[i]):
-			same = false
-			break
+	if left and right:
+		var size = left.size()
+		for i in range(0, size):
+			if not compare(left[i], right[i]):
+				same = false
+				break
+	if ((not left) and right) or ((not right) and left):
+		same = false
 	return same

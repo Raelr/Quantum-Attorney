@@ -7,6 +7,7 @@ var maths = MathUtils.new()
 var gate_iterations
 var amplitude = AmplitudeCalculator.new()
 var entangled_bits_manager = EntangledStateManager.new()
+onready var state_checker = StateChecker.new()
 onready var jury = $Jury512
 var previous_state
 
@@ -94,10 +95,15 @@ func process_bits():
 	print("Circuit State: ", circuit_state)
 	if not circuit_state == previous_state:
 		var amplitudes = amplitude.extract_amplitude(circuit_state, maths, wires.size())
+		update_testemonies()
 		jury.reset()
 		for amp in amplitudes:
 			jury.activate_next(amp)
 		previous_state = circuit_state
+
+func update_testemonies():
+	for wire in wires:
+		wire.update_testemony()
 
 func update_wires(wire_vals):
 	for i in range(0, wire_vals.size()):
