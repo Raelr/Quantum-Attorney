@@ -15,7 +15,7 @@ __meta__ = {
 }
 
 [node name="WireBoard" parent="." instance=ExtResource( 1 )]
-position = Vector2( -202.481, -64.6783 )
+position = Vector2( -201.534, -28.6874 )
 bits = [ 0.0, 0.0 ]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -42,7 +42,7 @@ position = Vector2( -604.954, 401.439 )
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Carpet" type="Sprite" parent="."]
-position = Vector2( 13.2849, -205.057 )
+position = Vector2( 14.2321, -169.066 )
 scale = Vector2( 1.76607, 1.89906 )
 z_index = -4
 texture = ExtResource( 6 )

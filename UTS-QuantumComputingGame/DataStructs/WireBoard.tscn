@@ -12,7 +12,7 @@ position = Vector2( -6.84272, -317.218 )
 other_person = "Person B"
 
 [node name="Wire2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -6.80009, 53.5014 )
+position = Vector2( -6.80009, 80.5854 )
 other_person = "Person A"
 
 [node name="Jury512" parent="." instance=ExtResource( 3 )]
