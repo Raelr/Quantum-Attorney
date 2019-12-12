@@ -3,7 +3,7 @@
 [ext_resource path="res://Images/Jury512.png" type="Texture" id=1]
 [ext_resource path="res://Jury.gd" type="Script" id=2]
 [ext_resource path="res://UI/JurySpeech.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Images/JuryMember.png" type="Texture" id=4]
+[ext_resource path="res://JuryMember.tscn" type="PackedScene" id=4]
 
 [node name="Jury512" type="Sprite"]
 position = Vector2( -0.765625, -0.765686 )
@@ -35,58 +35,39 @@ position = Vector2( 76.7898, 33.2095 )
 scale = Vector2( 0.7, 0.6 )
 z_index = 4
 
-[node name="JuryMember" type="Sprite" parent="." groups=[
-"Juror",
-]]
-position = Vector2( -43.486, 89.4472 )
-scale = Vector2( 0.6, 0.489933 )
-texture = ExtResource( 4 )
+[node name="JuryMember" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48.6697, 95.3591 )
+duration = 3.0
 
-[node name="JuryMember8" type="Sprite" parent="." groups=[
-"Juror",
-]]
-position = Vector2( 55.605, 90.9181 )
+[node name="JuryMember9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 50.4213, 96.83 )
 scale = Vector2( 0.6, 0.489933 )
-texture = ExtResource( 4 )
+duration = 3.0
 
-[node name="JuryMember2" type="Sprite" parent="." groups=[
-"Juror",
-]]
-position = Vector2( -43.486, 28.3644 )
+[node name="JuryMember2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48.6697, 29.9586 )
 scale = Vector2( 0.6, 0.489933 )
-texture = ExtResource( 4 )
+duration = 3.0
 
-[node name="JuryMember6" type="Sprite" parent="." groups=[
-"Juror",
-]]
-position = Vector2( 55.605, 30.1035 )
+[node name="JuryMember10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 50.4213, 31.4295 )
 scale = Vector2( 0.6, 0.489933 )
-texture = ExtResource( 4 )
+duration = 3.0
 
-[node name="JuryMember3" type="Sprite" parent="." groups=[
-"Juror",
-]]
-position = Vector2( -43.486, -31.7115 )
-scale = Vector2( 0.6, 0.489933 )
-texture = ExtResource( 4 )
+[node name="JuryMember3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48.6697, -34.7029 )
+duration = 3.0
 
-[node name="JuryMember7" type="Sprite" parent="." groups=[
-"Juror",
-]]
-position = Vector2( 55.605, -29.9725 )
+[node name="JuryMember11" parent="." instance=ExtResource( 4 )]
+position = Vector2( 50.4213, -33.232 )
 scale = Vector2( 0.6, 0.489933 )
-texture = ExtResource( 4 )
+duration = 3.0
 
-[node name="JuryMember4" type="Sprite" parent="." groups=[
-"Juror",
-]]
-position = Vector2( -43.486, -92.2799 )
-scale = Vector2( 0.6, 0.489933 )
-texture = ExtResource( 4 )
+[node name="JuryMember4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48.6697, -96.4084 )
+duration = 3.0
 
-[node name="JuryMember5" type="Sprite" parent="." groups=[
-"Juror",
-]]
-position = Vector2( 55.605, -90.5409 )
+[node name="JuryMember12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 50.4213, -94.9376 )
 scale = Vector2( 0.6, 0.489933 )
-texture = ExtResource( 4 )
+duration = 3.0

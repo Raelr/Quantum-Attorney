@@ -24,22 +24,22 @@ func activate_next(values):
 func change_colors():
 	if used_verdicts.size() == 1:
 		for juror in jurors:
-			juror.modulate = groups[0]
+			juror.change_color(groups[0])
 	elif used_verdicts.size() == 2:
 		for i in range(0, jurors.size()):
 			if i >= ((jurors.size() / 2)):
-				jurors[i].modulate = groups[1]
+				jurors[i].change_color(groups[1])
 			else:
-				jurors[i].modulate = groups[0]
+				jurors[i].change_color(groups[0])
 	elif used_verdicts.size() == 4:
-		jurors[0].modulate = groups[0]
-		jurors[1].modulate = groups[0]
-		jurors[2].modulate = groups[1]
-		jurors[3].modulate = groups[1]
-		jurors[4].modulate = groups[2]
-		jurors[5].modulate = groups[2]
-		jurors[6].modulate = groups[3]
-		jurors[7].modulate = groups[3]
+		jurors[0].change_color(groups[0])
+		jurors[1].change_color(groups[0])
+		jurors[2].change_color(groups[1])
+		jurors[3].change_color(groups[1])
+		jurors[4].change_color(groups[2])
+		jurors[5].change_color(groups[2])
+		jurors[6].change_color(groups[3])
+		jurors[7].change_color(groups[3])
 
 func is_active(speech):
 	return used_verdicts.has(speech)
