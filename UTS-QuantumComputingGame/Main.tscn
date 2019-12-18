@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://DataStructs/WireBoard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/UI_panel.png" type="Texture" id=2]
-[ext_resource path="res://UI/CNOTButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://UI/HademardButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/ControlButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Images/Carpet.png" type="Texture" id=6]
-[ext_resource path="res://Images/WoodenTileDark.png" type="Texture" id=7]
-[ext_resource path="res://Images/WoodenTile.png" type="Texture" id=8]
+[ext_resource path="res://UI/MainMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/CNOTButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/HademardButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/ControlButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Images/Carpet.png" type="Texture" id=7]
+[ext_resource path="res://Images/WoodenTileDark.png" type="Texture" id=8]
+[ext_resource path="res://Images/WoodenTile.png" type="Texture" id=9]
 
 [node name="Node2D" type="Node2D"]
 __meta__ = {
@@ -29,15 +30,19 @@ scale = Vector2( 7.22412, 7.22412 )
 z_index = -1
 texture = ExtResource( 2 )
 
-[node name="CNOTButton" parent="." instance=ExtResource( 3 )]
+[node name="MainMenu" parent="." instance=ExtResource( 3 )]
+position = Vector2( -31.2884, -67.0021 )
+scale = Vector2( 7.82978, 7.82978 )
+
+[node name="CNOTButton" parent="." instance=ExtResource( 4 )]
 position = Vector2( -412.708, 397.991 )
 scale = Vector2( 1.2, 1.2 )
 
-[node name="HademardButton" parent="." instance=ExtResource( 4 )]
+[node name="HademardButton" parent="." instance=ExtResource( 5 )]
 position = Vector2( -786.645, 394.147 )
 scale = Vector2( 1.2, 1.2 )
 
-[node name="ControlButton" parent="." instance=ExtResource( 5 )]
+[node name="ControlButton" parent="." instance=ExtResource( 6 )]
 position = Vector2( -604.954, 401.439 )
 scale = Vector2( 1.2, 1.2 )
 
@@ -45,64 +50,64 @@ scale = Vector2( 1.2, 1.2 )
 position = Vector2( 14.2321, -169.066 )
 scale = Vector2( 1.76607, 1.89906 )
 z_index = -4
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="WoodenTileDark" type="Sprite" parent="."]
 position = Vector2( -925.567, 399.542 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -6
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="WoodenTileDark2" type="Sprite" parent="."]
 position = Vector2( -925.567, 155.914 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -6
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="WoodenTileDark3" type="Sprite" parent="."]
 position = Vector2( -925.567, -89.1494 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -6
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="WoodenTileDark4" type="Sprite" parent="."]
 position = Vector2( -925.567, -333.51 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -6
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="WoodenTileDark5" type="Sprite" parent="."]
 position = Vector2( -925.532, -578.574 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -6
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="WoodenTile" type="Sprite" parent="."]
 position = Vector2( 931.162, 400.18 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -5
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="WoodenTile2" type="Sprite" parent="."]
 position = Vector2( 931.162, 156.054 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -5
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="WoodenTile3" type="Sprite" parent="."]
 position = Vector2( 931.162, -88.0729 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -5
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="WoodenTile4" type="Sprite" parent="."]
 position = Vector2( 931.162, -333.304 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -5
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="WoodenTile5" type="Sprite" parent="."]
 position = Vector2( 931.162, -577.431 )
 scale = Vector2( 1.90849, 1.90849 )
 z_index = -5
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )

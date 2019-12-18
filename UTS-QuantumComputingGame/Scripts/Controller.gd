@@ -2,18 +2,29 @@ extends Node2D
 const util = preload("Util.gd")
 onready var wireboard = get_node("/root/Node2D/WireBoard")
 onready var raycast = RayCastController.new()
+onready var main = get_tree().get_nodes_in_group("MainMenu")[0]
 var jury 
 var target
 var previous_target
 var is_held : bool
 var offset = Vector2()
-var maths = MathUtils.new()
+
 
 func check_input(delta):
 	var mouse_pos = get_global_mouse_position()
+	var moused_over = raycast.raycast_for_groups(self, mouse_pos, ["LogicGate", "button"])
+	if moused_over:
+		if moused_over.name.find("Button") != -1:
+			if moused_over.name.find("Start") != -1:
+				main.on_hover_start()
+			elif moused_over.name.find("Quit") != -1:
+				main.on_hover_quit()
+	else:
+		print("Nothing moused over")
+		main.on_empty()	
+
 	if Input.is_action_just_pressed("left_click"):
-		
-		target = set_target(raycast.raycast_for_groups(self, mouse_pos, ["LogicGate", "button"]))
+		target = set_target(moused_over)
 		if target:
 			offset = util.get_offset(target.position, mouse_pos, position)
 	elif Input.is_action_pressed("left_click") and !is_held:
