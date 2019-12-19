@@ -20,7 +20,6 @@ func check_input(delta):
 			elif moused_over.name.find("Quit") != -1:
 				main.on_hover_quit()
 	else:
-		print("Nothing moused over")
 		main.on_empty()	
 
 	if Input.is_action_just_pressed("left_click"):

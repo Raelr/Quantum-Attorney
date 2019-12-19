@@ -7,8 +7,8 @@ func on_hover_start():
 		animation.current_animation = "START_idle"
 
 func on_hover_quit():
-	
-	animation.current_animation = "QUIT"
+	if not animation.current_animation == "QUIT":
+		animation.current_animation = "QUIT"
 
 func on_empty():
 	if not animation.current_animation == "Idle":
