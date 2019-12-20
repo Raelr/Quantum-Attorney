@@ -9,7 +9,6 @@ var previous_target
 var is_held : bool
 var offset = Vector2()
 
-
 func check_input(delta):
 	var mouse_pos = get_global_mouse_position()
 	var moused_over = raycast.raycast_for_groups(self, mouse_pos, ["LogicGate", "button"])
@@ -51,7 +50,11 @@ func set_target(new_target):
 
 func check_if_button(target):
 	if target.name.find("Button") != -1:
-		target = target.on_click(target.position, self)
+		if target.name.find("Start") != -1 or target.name.find("Quit") != -1:
+			target.on_click()
+			target = null
+		else: 
+			target = target.on_click(target.position, self)
 	return target
 
 func remove_target(target):

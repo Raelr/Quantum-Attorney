@@ -112,3 +112,8 @@ func update_bits():
 	for gate in wire_gates:
 		if not gate is Sprite:
 			gate.passed_value = bit_value
+
+func update_bounds():
+	top_right = Vector2(shape.global_position.x + shape.shape.extents.x, shape.global_position.y + shape.shape.extents.y)
+	bottom_right = Vector2(shape.global_position.x + shape.shape.extents.x, shape.global_position.y -shape.shape.extents.y)
+	top_left = Vector2(shape.global_position.x -shape.shape.extents.x, shape.global_position.y + shape.shape.extents.y)

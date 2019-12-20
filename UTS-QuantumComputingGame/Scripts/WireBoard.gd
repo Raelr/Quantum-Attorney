@@ -117,3 +117,7 @@ func check_proximity(gate):
 		if util.get_distance(info.slot_info.global_position, gate) > 0.1:
 			success = true
 	return success
+
+func update_bounds():
+	for wire in wires:
+		wire.update_bounds()

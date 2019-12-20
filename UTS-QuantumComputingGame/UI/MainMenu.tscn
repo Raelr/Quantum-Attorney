@@ -4,6 +4,8 @@
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Images/MainMenu1.png" type="Texture" id=3]
 [ext_resource path="res://Images/MainMenu2.png" type="Texture" id=4]
+[ext_resource path="res://QuitButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://StartButton.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -122,7 +124,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ), ExtResource( 4 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "START_idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -161,12 +163,6 @@ tracks/2/keys = {
 "values": [  ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 40.9314, 10 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 40.6401, 10.7514 )
-
 [node name="MainMenu" type="Sprite" groups=[
 "MainMenu",
 ]]
@@ -180,24 +176,8 @@ script = ExtResource( 2 )
 anims/Idle = SubResource( 1 )
 anims/QUIT = SubResource( 2 )
 anims/START = SubResource( 3 )
-anims/START_idle = SubResource( 6 )
+anims/START_idle = SubResource( 4 )
 
-[node name="QuitButton" type="KinematicBody2D" parent="." groups=[
-"quit_button",
-]]
-position = Vector2( 0, 43.1058 )
-scale = Vector2( 1, 1 )
+[node name="QuitButton" parent="." instance=ExtResource( 5 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="QuitButton"]
-position = Vector2( 0, -0.145645 )
-scale = Vector2( 1, 1 )
-shape = SubResource( 5 )
-
-[node name="StartButton" type="KinematicBody2D" parent="." groups=[
-"start_button",
-]]
-position = Vector2( 0, 13.3977 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StartButton"]
-scale = Vector2( 1, 1 )
-shape = SubResource( 4 )
+[node name="StartButton" parent="." instance=ExtResource( 6 )]
