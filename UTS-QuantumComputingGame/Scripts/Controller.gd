@@ -54,7 +54,7 @@ func check_if_button(target):
 			target.on_click()
 			target = null
 		else: 
-			target = target.on_click(target.position, self)
+			target = target.on_click(target.global_position, self)
 	return target
 
 func remove_target(target):

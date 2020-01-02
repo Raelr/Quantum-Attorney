@@ -49,7 +49,7 @@ func destroy_after_movement():
 	logic_gate.destination = get_button()
 
 func get_button():
-	return get_tree().get_nodes_in_group("Control_button")[0].position
+	return get_tree().get_nodes_in_group("Control_button")[0].global_position
 
 func set_movable(status):
 	logic_gate.is_movable = status

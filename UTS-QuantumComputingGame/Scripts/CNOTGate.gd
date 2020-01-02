@@ -33,7 +33,7 @@ func process_value():
 		if factors:
 			if factors.size() == 1:
 				tensor = maths.tensor([control, passed_value])
-			elif factors.size > 1:
+			elif factors.size() > 1:
 				tensor = maths.tensor(factors[1], factors[0])
 		else:
 			tensor = passed_value
@@ -81,7 +81,7 @@ static func is_entangled(state):
 	return state == [1/sqrt(2), 0, 0, 1/sqrt(2)] or state == [0, 1/sqrt(2), 1/sqrt(2), 0]
 
 func get_button():
-	return get_tree().get_nodes_in_group("CNOT_button")[0].position
+	return get_tree().get_nodes_in_group("CNOT_button")[0].global_position
 func set_movable(status):
 	logic_gate.is_movable = status
 

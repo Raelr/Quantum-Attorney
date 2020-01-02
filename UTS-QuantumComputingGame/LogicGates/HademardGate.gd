@@ -36,7 +36,7 @@ func destroy_after_movement():
 	logic_gate.destroy = true
 	set_movable(false)
 	remove_from_group("LogicGate")
-	logic_gate.destination = get_tree().get_nodes_in_group("Hademard_button")[0].position
+	logic_gate.destination = get_tree().get_nodes_in_group("Hademard_button")[0].global_position
 
 func set_movable(status):
 	logic_gate.is_movable = status
